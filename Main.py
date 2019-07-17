@@ -24,7 +24,7 @@ def token():
     code_payload = {
         "grant_type": "authorization_code",
         "code": str(auth_token),
-        "redirect_uri": "http://localhost:5000/callback",
+        "redirect_uri": "https://spoflyv1.herokuapp.com/callback",
         'client_id': CLIENT_ID,
         'client_secret': CLIENT_SECRET,
     }
