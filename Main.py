@@ -36,7 +36,7 @@ def token():
     }
     post_request = requests.post("https://accounts.spotify.com/api/token", data=code_payload, headers=headers)
     response_data = json.loads(post_request.text)
-    access_token = response_data["access_token"]
+    access_token = response_data['access_token']
     global TOKEN
     TOKEN = access_token
     return redirect("/lyrics")
