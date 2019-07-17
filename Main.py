@@ -79,7 +79,7 @@ def init():
             
             """
 
-return render_template("home.html", data=lyrics, artist_name=artist_name, song_title=song_title,
+    return render_template("home.html", data=lyrics, artist_name=artist_name, song_title=song_title,
                        image=image_url, refresh_ms=refresh_ms)
 if __name__ == '__main__':
     app.run()
