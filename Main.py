@@ -44,7 +44,43 @@ def token():
 
 @app.route("/lyrics")
 def init():
-    return "a"
+    spotify = requests.get("https://api.spotify.com/v1/me/player/currently_playing?access_token=" + TOKEN)
+    
+    current_song = spotify.json()
+    song_title = current_song['item']['name']
+    artist_name = current_song['item']['artists'][0]['name']
+    image_url = current_song['item']['album']['images'][0]['url']
+    duration_ms = current_song['item']['duration_ms']
+    progress_ms = current_song['progress_ms']
+    refresh_ms = (duration_ms - progress_ms) / 1000 - 15
+    
+    if refresh_ms < 0:
+        refresh_ms *= -1
+    
+    quote = "'"
+    artist_name_edited=json.dumps(artist_name).replace(' ','-').replace('"','',2).replace(quote,'')
+    song_title_edited=json.dumps(song_title).replace(' ','-').replace('"','',2).replace(quote,'').replace('(','').replace(')','')
+    song_url = GENIUS_URL+artist_name_edited+"-"+song_title_edited+"-lyrics"
+    data = requests.get(song_url)
+    print(song_url)
+    if data.status_code==404:
+        lyrics = "lyrics not found"
+
+    else:
+        
+        soup = BeautifulSoup(data.text,"html.parser")
+        lyrics = soup.find("div",attrs={'class':'lyrics'})
+        lyrics = lyrics.get_text()
+        lyrics=lyrics[2::]
+        """
+            lyricsgenius can be used
+            song = genius.search_song(title=song_title, artist=artist_name)
+            song_lyrics = song.lyrics
+            
+            """
+
+    return render_template("home.html", data=lyrics, artist_name=artist_name, song_title=song_title,
+                       image=image_url, refresh_ms=refresh_ms)
 if __name__ == '__main__':
     app.run()
 
