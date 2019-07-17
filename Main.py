@@ -15,7 +15,7 @@ GENIUS_URL = "http://www.genius.com/"
 @app.route("/")
 def log():
     return redirect(
-                    "https://accounts.spotify.com/authorize?client_id=CLIENT_ID&response_type=code&redirect_uri=http://localhost:5000/callback&scope=user-read-currently-playing")
+                    "https://accounts.spotify.com/authorize?client_id=e6cd36c6ea1c44b09245097b9e3367e1&response_type=code&redirect_uri=http://localhost:5000/callback&scope=user-read-currently-playing")
 
 
 @app.route("/callback")
