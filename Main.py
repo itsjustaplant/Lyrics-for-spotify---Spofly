@@ -2,7 +2,8 @@ from flask import Flask, render_template, redirect, request
 import requests
 import json
 import base64
-from bs4 import BeautifulSoup
+import lyricsgenius
+
 
 
 app = Flask(__name__)
@@ -10,7 +11,7 @@ TOKEN = " "
 CLIENT_ID = "e6cd36c6ea1c44b09245097b9e3367e1"
 CLIENT_SECRET = "94c8b9efa0f34440b7c3225b75ff0b37"
 GENIUS_URL = "http://www.genius.com/"
-
+genius = lyricsgenius.Genius("YXICHA95DGXKPPPkXp-iSddKqjf93dOfxM30rG2s168h6t721l6WGcDt8KpGVO7G")
 
 @app.route("/")
 def log():
@@ -57,27 +58,13 @@ def init():
     if refresh_ms < 0:
         refresh_ms *= -1
     
-    quote = "'"
-    artist_name_edited=json.dumps(artist_name).replace(' ','-').replace('"','',2).replace(quote,'')
-    song_title_edited=json.dumps(song_title).replace(' ','-').replace('"','',2).replace(quote,'').replace('(','').replace(')','')
-    song_url = GENIUS_URL+artist_name_edited+"-"+song_title_edited+"-lyrics"
-    data = requests.get(song_url)
-    print(song_url)
-    if data.status_code==404:
-        lyrics = "lyrics not found"
-
-    else:
-        
-        soup = BeautifulSoup(data.text,"html.parser")
-        lyrics = soup.find("div",attrs={'class':'lyrics'})
-        lyrics = lyrics.get_text()
-        lyrics=lyrics[2::]
-        """
-            lyricsgenius can be used
-            song = genius.search_song(title=song_title, artist=artist_name)
-            song_lyrics = song.lyrics
+    
+    
+    
+    song = genius.search_song(title=song_title, artist=artist_name)
+    lyrics = song.lyrics
             
-            """
+            
 
     return render_template("home.html", data=lyrics, artist_name=artist_name, song_title=song_title,
                        image=image_url, refresh_ms=refresh_ms)
