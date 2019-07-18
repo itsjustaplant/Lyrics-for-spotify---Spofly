@@ -48,6 +48,7 @@ def init():
     spotify = requests.get("https://api.spotify.com/v1/me/player/currently_playing?access_token=" + TOKEN)
     
     current_song = spotify.json()
+    print(current_song)
     song_title = current_song['item']['name']
     artist_name = current_song['item']['artists'][0]['name']
     image_url = current_song['item']['album']['images'][0]['url']
