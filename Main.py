@@ -12,8 +12,10 @@ CLIENT_ID = "e6cd36c6ea1c44b09245097b9e3367e1"
 CLIENT_SECRET = "94c8b9efa0f34440b7c3225b75ff0b37"
 GENIUS_URL = "http://www.genius.com/"
 genius = lyricsgenius.Genius("YXICHA95DGXKPPPkXp-iSddKqjf93dOfxM30rG2s168h6t721l6WGcDt8KpGVO7G")
-
 @app.route("/")
+def login():
+    return render_template(("login.html"))@app.route("/")
+@app.route("/login")
 def log():
     return redirect(
                     "https://accounts.spotify.com/authorize?client_id=e6cd36c6ea1c44b09245097b9e3367e1&response_type=code&redirect_uri=https://spoflyv1.herokuapp.com/callback&scope=user-read-currently-playing")
