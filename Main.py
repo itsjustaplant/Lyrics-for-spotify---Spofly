@@ -14,7 +14,7 @@ GENIUS_URL = "http://www.genius.com/"
 genius = lyricsgenius.Genius("YXICHA95DGXKPPPkXp-iSddKqjf93dOfxM30rG2s168h6t721l6WGcDt8KpGVO7G")
 @app.route("/")
 def login():
-    return render_template(("login.html"))@app.route("/")
+    return render_template(("login.html"))
 @app.route("/login")
 def log():
     return redirect(
