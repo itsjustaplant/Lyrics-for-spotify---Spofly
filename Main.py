@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, redirect, request
 import requests
 import json
@@ -47,30 +48,50 @@ def token():
 
 @app.route("/lyrics")
 def init():
-    spotify = requests.get("https://api.spotify.com/v1/me/player/currently_playing?access_token=" + TOKEN)
-    
+    headers = {
+        "Authorization": "Bearer {}".format(TOKEN)
+    }
+    spotify = requests.get("https://api.spotify.com/v1/me/player/currently_playing", headers=headers)
+    while spotify.status_code != 200:
+        spotify = spotify = requests.get("https://api.spotify.com/v1/me/player/currently_playing", headers=headers)
     current_song = spotify.json()
-    print(current_song)
     song_title = current_song['item']['name']
     artist_name = current_song['item']['artists'][0]['name']
-    image_url = current_song['item']['album']['images'][0]['url']
+    if current_song['item']['is_local'] == bool(0):
+        image_url = current_song['item']['album']['images'][0]['url']
+else:
+    image_url=""
     duration_ms = current_song['item']['duration_ms']
     progress_ms = current_song['progress_ms']
     refresh_ms = (duration_ms - progress_ms) / 1000 - 15
     
     if refresh_ms < 0:
         refresh_ms *= -1
+
+    if song_title and artist_name:
+        song = genius.search_song(title=song_title, artist=artist_name)
+
+        if song!=None:
+lyrics = song.lyrics
     
-    
-    
-    
-    song = genius.search_song(title=song_title, artist=artist_name)
-    lyrics = song.lyrics
+    else:
+        lyrics = "lyrics not found"
+
+else:
+    lyrics = "if you are playing a local file please edit metadata"
             
             
 
     return render_template("home.html", data=lyrics, artist_name=artist_name, song_title=song_title,
                        image=image_url, refresh_ms=refresh_ms)
+@app.route("/next")
+def next():
+    headers = {
+        "Authorization": "Bearer {}".format(TOKEN)
+    }
+    requests.post("https://api.spotify.com/v1/me/player/next",headers=headers)
+    return redirect("/lyrics")
+
 if __name__ == '__main__':
     app.run()
 
