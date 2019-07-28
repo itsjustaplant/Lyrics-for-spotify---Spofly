@@ -18,7 +18,7 @@ def login():
 @app.route("/login")
 def log():
     return redirect(
-                    "https://accounts.spotify.com/authorize?client_id="+CLIENT_ID+"&response_type=code&redirect_uri=https://spoflyv1.herokuapp.com/callback&scope=user-read-currently-playing user-modify-playback-state")
+        "https://accounts.spotify.com/authorize?client_id="+CLIENT_ID+"&response_type=code&redirect_uri=https://spoflyv1.herokuapp.com/callback&scope=user-read-private user-read-email user-read-currently-playing user-modify-playback-state")
 
 @app.route("/callback")
 def token():
@@ -33,11 +33,11 @@ def token():
     base64encoded = base64.urlsafe_b64encode(format_client.encode()).decode()
     session['headers'] = {"Authorization": "Basic {}".format(base64encoded)}
     post_request = requests.post("https://accounts.spotify.com/api/token", data=session['code_payload'],
-                                 headers=session['headers'])
-response_data = json.loads(post_request.text)
-session['access_token'] = response_data['access_token']
-session['authorization_header'] = {'Authorization': 'Bearer {}'.format(session['access_token'])}
-return redirect("/lyrics")
+                             headers=session['headers'])
+    response_data = json.loads(post_request.text)
+    session['access_token'] = response_data['access_token']
+    session['authorization_header'] = {'Authorization': 'Bearer {}'.format(session['access_token'])}
+    return redirect("/lyrics")
 
 
 
@@ -53,28 +53,28 @@ def init():
     song_title = current_song['item']['name']
     artist_name = current_song['item']['artists'][0]['name']
     if current_song['item']['is_local'] == bool(0):
-        image_url = current_song['item']['album']['images'][0]['url']
-else:
-    image_url=""
+     image_url = current_song['item']['album']['images'][0]['url']
+    else:
+        image_url=""
     duration_ms = current_song['item']['duration_ms']
     progress_ms = current_song['progress_ms']
     refresh_ms = (duration_ms - progress_ms) / 1000 - 15
-    
+
     if refresh_ms < 0:
-        refresh_ms *= -1
+            refresh_ms *= -1
 
     if song_title and artist_name:
-        song = genius.search_song(title=song_title, artist=artist_name)
+     song = genius.search_song(title=song_title, artist=artist_name)
 
-        if song!=None:
-lyrics = song.lyrics
-    
-    else:
+     if song!=None:
+        lyrics = song.lyrics
+
+     else:
         lyrics = "lyrics not found"
 
-else:
-    lyrics = "if you are playing a local file please edit metadata"
-    
+    else:
+        lyrics = "if you are playing a local file please edit metadata"
+
     return render_template("home.html", data=lyrics, artist_name=artist_name, song_title=song_title,
                            image=image_url, refresh_ms=refresh_ms)\
 
