@@ -41,8 +41,8 @@ def token():
 
 @app.route("/lyrics")
 def init():
-    if session['access_token']:
-
+    token = session.get("access_token")
+    if token:
         headers = {
             "Authorization": "Bearer {}".format(session['access_token'])
         }
@@ -77,7 +77,9 @@ def init():
 
         return render_template("home.html", data=lyrics, artist_name=artist_name, song_title=song_title,
                                image=image_url, refresh_ms=refresh_ms)
+
     else:
+        print("hey")
         return redirect("/callback")
 
 @app.route("/next")
