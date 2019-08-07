@@ -80,7 +80,7 @@ def init():
 
     else:
         print("hey")
-        return redirect("/callback")
+        return redirect("/login")
 
 @app.route("/next")
 def next():
