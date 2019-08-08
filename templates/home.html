@@ -2,72 +2,79 @@
 <html lang="en">
 <head>
     <link rel="icon" href={{image}}>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content={{refresh_ms}} http-equiv="refresh">
     <meta charset="UTF-8">
     <title>{{artist_name}}-{{song_title}}</title>
 </head>
-<body>
-<div class="row">
-    <div id='lyric_section'>
+<body >
 
-        <h1>{{artist_name}}-{{song_title}}</h1>
-
-        <pre><span>{{ data }}</span></pre>
-
+     <div id="image">
+        <a><img id="img" src={{image}}></a>
 
     </div>
-    <div id="image_section">
-        <img id="img" src={{image}}>
-           
+
+
+
+<div id = "song_title"> <a>{{artist_name}}-{{song_title}}</a> </div>
+<div id='lyric_section'>
+        <pre id="lyrics"><span>{{ data }}</span></pre>
     </div>
 </body>
 </html>
 <style>
-    body {
-        margin-left: 10px;
-        margin-right: 10px;
-        background-color: #2f3032;
+    @media screen and (min-width: 240px) {
+        body{
+            background-image: {{image}};
+            margin-top: -0.001vh;
+            background-color: #2f3032;
+
+        }
+        #image{
+
+            position: fixed;
+            alignment: center;
+            display: block;
+            width: 60vw;
+            height: 40vh;
+            margin-left: 20vw;
+            z-index: 8;
+            margin-bottom: -5vh;
+        }
+        #img{
+            width: 100%;
+            height: 100%;
+        }
+        #song_title{
+            font-family: Circular, Helvetica arial, sans-serif;
+            display: block;
+            text-align: center;
+            background-color: #2f3032;
+            color: #ede68a;
+            position: fixed;
+            alignment: center;
+            width: 60vw;
+            font-size: 2.2vh;
+            margin-left: 20vw;
+            margin-top: 40vh;
+            z-index: 8;
+
+        }
+        #lyrics{
+            font-family: Circular, Helvetica arial, sans-serif;
+            text-align: center;
+            display: block;
+            position: absolute;
+            margin-left: 30vw;
+            margin-right: 30vw;
+            width: 40vw;
+            margin-top: 43.8vh;
+            font-size: 2vh;
+            background-color: #2f3032;
+            color: #ede68a !important;
+        }
     }
-
-    .row {
-        display: flex;
-    }
-
-    #img {
-        width: auto;
-        height: auto;
-        position: fixed;
-    }
-    #github-link{
-        position: fixed;
-        width: 64px;
-        height: 64px;
-        margin-top: 680px;
-        margin-left: 60px;
-        -webkit-transition: .5s ease;
-}
-#github-link:hover{
-    opacity: 0.3;
-    -webkit-transition: .5s ease;
-}
-
-
-    #image_section {
-        width: 45%;
-        height: auto;
-        background-repeat: no-repeat;
-
-    }
-
-    #lyric_section {
-        font-family: Circular, Helvetica arial, sans-serif;
-        margin-left: 10px;
-        font-size: 14pt;
-        color: #ede68a;
-        width: 55%;
-        height: auto;
-    }
-
     pre {
         overflow-x: auto;
         white-space: pre-wrap;
