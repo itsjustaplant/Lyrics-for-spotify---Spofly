@@ -89,7 +89,10 @@ def next():
     }
     requests.post("https://api.spotify.com/v1/me/player/next",headers=headers)
     return redirect("/lyrics")
-
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/")
 if __name__ == '__main__':
     app.run()
 
