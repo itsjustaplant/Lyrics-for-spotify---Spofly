@@ -83,12 +83,9 @@ def init():
         else:
             return render_template("404.html", data="you have reached the end of the internet ",
                                    artist_name=artist_name, song_title=song_title, refresh_ms=refresh_ms)
-
-
-
     else:
         return redirect("/login")
-    
+
 @app.route("/next")
 def next():
     headers = {
@@ -101,6 +98,7 @@ def next():
 def logout():
     session.clear()
     return redirect("/")
+
 if __name__ == '__main__':
     app.run()
 
