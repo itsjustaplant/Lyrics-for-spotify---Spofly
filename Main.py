@@ -55,7 +55,7 @@ def init():
         if current_song['item']['is_local'] == bool(0):
             image_url = current_song['item']['album']['images'][0]['url']
         else:
-            image_url = ""
+            image_url = "https://spoflyv1.herokuapp.com/static/404.png"
         duration_ms = current_song['item']['duration_ms']
         progress_ms = current_song['progress_ms']
         refresh_ms = (duration_ms - progress_ms) / 1000 - 15
