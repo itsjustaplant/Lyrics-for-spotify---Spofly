@@ -41,49 +41,45 @@ def token():
 
 @app.route("/lyrics")
 def init():
+    token = session.get("access_token")
     if token:
         headers = {
             "Authorization": "Bearer {}".format(session['access_token'])
         }
-
         spotify = requests.get("https://api.spotify.com/v1/me/player/currently_playing", headers=headers)
-
         while spotify.status_code != 200:
             spotify = spotify = requests.get("https://api.spotify.com/v1/me/player/currently_playing", headers=headers)
         current_song = spotify.json()
-        song_id = current_song['item']['id']
-
         song_title = current_song['item']['name']
         artist_name = current_song['item']['artists'][0]['name']
+        if current_song['item']['is_local'] == bool(0):
+            image_url = current_song['item']['album']['images'][0]['url']
+        else:
+            image_url = ""
         duration_ms = current_song['item']['duration_ms']
         progress_ms = current_song['progress_ms']
         refresh_ms = (duration_ms - progress_ms) / 1000 - 15
+
         if refresh_ms < 0:
             refresh_ms *= -1
 
-        if current_song['item']['is_local'] == bool(0):
-            image_url = current_song['item']['album']['images'][0]['url']
+        if song_title and artist_name:
+            song = genius.search_song(title=song_title, artist=artist_name)
 
-            if song_title and artist_name:
-                song = genius.search_song(title=song_title, artist=artist_name)
-
-                if song != None:
-                    lyrics = song.lyrics
-
-                else:
-                    lyrics = "lyrics not found"
+            if song != None:
+                lyrics = song.lyrics
 
             else:
-                lyrics = "if you are playing a local file please edit metadata"
-
-            return render_template("home.html", data=lyrics, artist_name=artist_name,
-                                   song_title=song_title,
-                                   image=image_url, refresh_ms=refresh_ms)
+                lyrics = "lyrics not found"
 
         else:
-            return render_template("404.html", data="you have reached the end of the internet ",
-                                   artist_name=artist_name, song_title=song_title, refresh_ms=refresh_ms)
+            lyrics = "if you are playing a local file please edit metadata"
+
+        return render_template("home.html", data=lyrics, artist_name=artist_name, song_title=song_title,
+                               image=image_url, refresh_ms=refresh_ms)
+
     else:
+        print("hey")
         return redirect("/login")
 
 @app.route("/next")
@@ -98,7 +94,6 @@ def next():
 def logout():
     session.clear()
     return redirect("/")
-
 if __name__ == '__main__':
     app.run()
 
