@@ -17,9 +17,6 @@
             <a href="https://spoflyv1.herokuapp.com/logout">  <img id="img" src="{{image}}"> </a>
             
         </div>
-        
-        
-        
         <div id = "song_title"> <a>{{artist_name}}-{{song_title}}</a> </div>
         <div id='lyric_section'>
             <pre id="lyrics"><span>{{ data }}</span></pre>
@@ -29,44 +26,40 @@
 <style>
     @media screen and (min-width: 240px) {
         body{
-            
-            background-repeat: no-repeat;
-            background-size: cover;
             background-color: #2f3032;;
             margin-top: -0.001vh;
-            
         }
+
         #image{
-            
             position: fixed;
             alignment: center;
             display: block;
-            width: 60vw;
+            width: 100vw;
             height: 50vh;
-            margin-left: 20vw;
             z-index: 8;
             margin-bottom: -5vh;
             background-color: #2f3032;;
         }
+
         #img{
             display: block;
             margin-left:auto;
             margin-right:auto;
-            max-width: 500px;
+            max-width: 50vh;
             width: 100%;
             height: 100%;
         }
+
         #song_title{
             font-family: Gill Sans;
             font-weight: bold;
-            
             display: block;
             text-align: center;
             background-color: #2f3032;;
             color: #ede68a;
             position: fixed;
             alignment: center;
-            width: 60vw;
+            width: 100vw;
             font-size: 2.5vh;
             margin-left: 20vw;
             margin-top: 50vh;
@@ -78,9 +71,7 @@
             text-align: center;
             display: block;
             position: absolute;
-            margin-left: 30vw;
-            margin-right: 30vw;
-            width: 40vw;
+            width: 100vw;
             margin-top: 53.6vh;
             font-size: 2.5vh;
             background-color: #2f3032;;
