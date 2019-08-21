@@ -4,6 +4,10 @@ import json
 import base64
 import lyricsgenius
 import os
+from colorthief import ColorThief
+import urllib.request
+import io
+import ssl
 
 app = Flask(__name__)
 app.secret_key=os.urandom(20)
@@ -46,40 +50,61 @@ def init():
         headers = {
             "Authorization": "Bearer {}".format(session['access_token'])
         }
+
         spotify = requests.get("https://api.spotify.com/v1/me/player/currently_playing", headers=headers)
+
         while spotify.status_code != 200:
             spotify = spotify = requests.get("https://api.spotify.com/v1/me/player/currently_playing", headers=headers)
         current_song = spotify.json()
+        song_id = current_song['item']['id']
+
         song_title = current_song['item']['name']
         artist_name = current_song['item']['artists'][0]['name']
-        if current_song['item']['is_local'] == bool(0):
-            image_url = current_song['item']['album']['images'][0]['url']
-        else:
-            image_url = "https://spoflyv1.herokuapp.com/static/404.png"
         duration_ms = current_song['item']['duration_ms']
         progress_ms = current_song['progress_ms']
         refresh_ms = (duration_ms - progress_ms) / 1000 - 15
-
         if refresh_ms < 0:
-            refresh_ms *= -1
+                refresh_ms *= -1
 
-        if song_title and artist_name:
-            song = genius.search_song(title=song_title, artist=artist_name)
+        if current_song['item']['is_local'] == bool(0):
+         context = ssl._create_unverified_context()
+         image_url = current_song['item']['album']['images'][0]['url']
+         fd = urllib.request.urlopen(image_url,context=context)
+         f = io.BytesIO(fd.read())
+         color_thief = ColorThief(f)
+         palette = color_thief.get_palette(color_count=6)
 
-            if song != None:
+         def rgb2hex(r, g, b):
+             return "#{:02x}{:02x}{:02x}".format(r, g, b)
+
+         colors = [7]
+         for i in range(0, 6):
+             hex = rgb2hex(palette[i][0], palette[i][1], palette[i][2])
+             colors.append(hex)
+
+         code_1 = colors[1]
+         code_6 = colors[6]
+         if song_title and artist_name:
+             song = genius.search_song(title=song_title, artist=artist_name)
+
+             if song!=None:
                 lyrics = song.lyrics
 
-            else:
+             else:
                 lyrics = "lyrics not found"
 
-        else:
-            lyrics = "if you are playing a local file please edit metadata"
+         else:
+                lyrics = "if you are playing a local file please edit metadata"
 
-        return render_template("home.html", data=lyrics, artist_name=artist_name, song_title=song_title,
+         return render_template("home.html",bg_color=code_1,txt_color=code_6, data=lyrics, artist_name=artist_name, song_title=song_title,
                                image=image_url, refresh_ms=refresh_ms)
 
+        else:
+            return render_template("404.html",data= "you have reached the end of the internet ",artist_name=artist_name,song_title=song_title,refresh_ms=refresh_ms)
+
+
+
     else:
-        print("hey")
         return redirect("/login")
 
 @app.route("/next")

@@ -24,23 +24,23 @@
     </body>
 </html>
 <style>
-    @media screen and (min-width: 480px) {
+   @media screen and (min-width: 480px) {
         body{
-            background-color: #2f3032;;
+
+            background-color: {{bg_color}};
             margin-top: -0.001vh;
         }
-
         #image{
             position: fixed;
             alignment: center;
             display: block;
             width: 100vw;
             height: 50vh;
+
             z-index: 8;
             margin-bottom: -5vh;
-            background-color: #2f3032;;
+            background-color: {{bg_color}};
         }
-
         #img{
             display: block;
             margin-left:auto;
@@ -49,21 +49,20 @@
             width: 100%;
             height: 100%;
         }
-
         #song_title{
             font-family: Gill Sans;
             font-weight: bold;
             display: block;
             text-align: center;
-            background-color: #2f3032;;
-            color: #ede68a;
+            background-color: {{bg_color}};
+            color: {{txt_color}};
             position: fixed;
             alignment: center;
             width: 100vw;
             font-size: 2.5vh;
             margin-top: 50vh;
             z-index: 8;
-            
+
         }
         #lyrics{
             font-family: "Gill Sans";
@@ -73,16 +72,16 @@
             width: 100vw;
             margin-top: 53.6vh;
             font-size: 2.5vh;
-            background-color: #2f3032;;
-            color: #ede68a !important;
+            background-color: {{bg_color}};
+            color: {{txt_color}} !important;
         }
     }
-     @media screen and (max-width: 4800px) {
+    @media screen and (max-width:480px ){
         body{
-            background-color: #2f3032;;
+
+            background-color: {{bg_color}};
             margin-top: -0.001vh;
         }
-
         #image{
             position: fixed;
             alignment: center;
@@ -91,24 +90,23 @@
             height: 50vh;
             z-index: 8;
             margin-bottom: -5vh;
-            background-color: #2f3032;;
+            background-color: {{bg_color}};
         }
-
         #img{
             display: block;
             margin-left:auto;
             margin-right:auto;
+
             width: 100%;
             height: 100%;
         }
-
         #song_title{
             font-family: Gill Sans;
             font-weight: bold;
             display: block;
             text-align: center;
-            background-color: #2f3032;;
-            color: #ede68a;
+            background-color: {{bg_color}};
+            color: {{txt_color}};
             position: fixed;
             alignment: center;
             width: 100vw;
@@ -125,15 +123,16 @@
             width: 100vw;
             margin-top: 53.6vh;
             font-size: 2.5vh;
-            background-color: #2f3032;;
-            color: #ede68a !important;
+            background-color: {{bg_color}};
+            color: {{txt_color}} !important;
         }
     }
-pre {
-    overflow-x: auto;
-    white-space: pre-wrap;
-    white-space: -moz-pre-wrap;
-    white-space: -pre-wrap;
-    white-space: -o-pre-wrap;
-    word-wrap: break-word;
-}
+    pre {
+        overflow-x: auto;
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
+        word-wrap: break-word;
+    }
+</style>
