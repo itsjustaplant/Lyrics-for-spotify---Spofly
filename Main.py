@@ -77,13 +77,14 @@ def init():
          def rgb2hex(r, g, b):
              return "#{:02x}{:02x}{:02x}".format(r, g, b)
 
-         colors = [7]
-         for i in range(0, 6):
-             hex = rgb2hex(palette[i][0], palette[i][1], palette[i][2])
-             colors.append(hex)
+         a = 1 - (0.299 * palette[0][0] + 0.587 * palette[0][1] + 0.114 * palette[0][2]) / 255
+         print(a)
+         if a < 0.5:
+             col_2 = "#000000"
+         else:
+             col_2 = "#FFFFFF"
 
-         code_1 = colors[1]
-         code_6 = colors[6]
+         col_1 = rgb2hex(palette[0][0], palette[0][1], palette[0][2])
          if song_title and artist_name:
              song = genius.search_song(title=song_title, artist=artist_name)
 
@@ -96,7 +97,7 @@ def init():
          else:
                 lyrics = "if you are playing a local file please edit metadata"
 
-         return render_template("home.html",bg_color=code_1,txt_color=code_6, data=lyrics, artist_name=artist_name, song_title=song_title,
+         return render_template("home.html",bg_color=col_1,txt_color=col_2, data=lyrics, artist_name=artist_name, song_title=song_title,
                                image=image_url, refresh_ms=refresh_ms)
 
         else:
