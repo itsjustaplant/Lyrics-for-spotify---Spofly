@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <link rel="icon" href={{image}}>
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" id="custom-css" href="https://3wga6448744j404mpt11pbx4-wpengine.netdna-ssl.com/wp-content/themes/treehouse-blog-reboot/css/all.css?ver=5.2.1" type="text/css" media="all">
-     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content={{refresh_ms}} http-equiv="refresh">
     <meta charset="UTF-8">
     <title>{{artist_name}}-{{song_title}}</title>
 </head>
 <body>
 <div id="row">
-     <div id="image">
+    <div id="image">
         <a href="https://spoflyv1.herokuapp.com/logout">  <img id="img" src="{{image}}"> </a>
     </div>
 
-<div id='lyric_section'>
-    <h1>{{artist_name}}-{{song_title}}</h1>
+    <div id='lyric_section'>
+        <h1>{{artist_name}}-{{song_title}}</h1>
         <pre id="lyrics"><span>{{ data }}</span></pre>
     </div>
 
@@ -26,107 +24,108 @@
 <style>
     @media screen and (min-width: 480px){
         body{
-            background-color: {{bg_color}}
-        }
-        #row{
-            display:flex;
-            background-color: {{bg_color}};
-        }
-        #image{
+        background-color: {{bg_color}}
+    }
+    #row{
+        display:flex;
+    background-color: {{bg_color}};
+    }
+    #image{
 
-            width: 50vw;
-            height: 50vw;
-            position:fixed;
-            background-color: {{bg_color}};
+        width: 50vw;
+        height: 50vw;
+        position:fixed;
+    background-color: {{bg_color}};
 
-        }
-        #lyric_section{
-            margin-top: 20px;
-            margin-left: 50vw;
-            width: 50vw;
-        }
-        h1{
-            margin-top:-20px;
-            width: 50vw;
-            z-position:5;
-            position:fixed;
-            text-align:center;
-            background-color: {{bg_color}};
-            color: {{txt_color}} !important;
-            font-family: "Gill Sans";
-            font-size:5vh;
+    }
+    #lyric_section{
+        margin-top: 20px;
+        margin-left: 50vw;
+        width: 50vw;
+    }
+    h1{
+        margin-top:-20px;
+        width: 50vw;
+        z-position:5;
+        position:fixed;
+        text-align:center;
+    background-color: {{bg_color}};
+    color: {{txt_color}} !important;
+    font-family: "Gill Sans";
+    font-size:5vh;
 
-        }
-        #lyrics{
-            background-color: {{bg_color}};
-            color: {{txt_color}} !important;
-            font-family: "Gill Sans";
-            font-size:2.5vh;
-        }
-        #img{
-            height: 50vw;
-            width: 50vw;
-        }
-        pre{
-            overflow-x: auto;
-            white-space: pre-wrap;
-            white-space: -moz-pre-wrap;
-            white-space: -pre-wrap;
-            white-space: -o-pre-wrap;
-            word-wrap: break-word;
-        }
+    }
+    #lyrics{
+        margin-top:5vh;
+    background-color: {{bg_color}};
+    color: {{txt_color}} !important;
+    font-family: "Gill Sans";
+    font-size:2.5vh;
+    }
+    #img{
+        height: 50vw;
+        width: 50vw;
+    }
+    pre{
+        overflow-x: auto;
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
+        word-wrap: break-word;
+    }
     }
 
     @media screen and (max-width:480px ){
         body{
 
-            background-color: {{bg_color}};
-            margin-top: -0.001vh;
-        }
-        #image{
-            position: fixed;
-            alignment: center;
-            display: block;
-            width: 100vw;
-            height: 50vh;
-            z-index: 8;
-            margin-bottom: -5vh;
-            background-color: {{bg_color}};
-        }
-        #img{
-            display: block;
-            margin-left:auto;
-            margin-right:auto;
+        background-color: {{bg_color}};
+    margin-top: -0.001vh;
+    }
+    #image{
+        position: fixed;
+        alignment: center;
+        display: block;
+        width: 100vw;
+        height: 50vh;
+        z-index: 8;
+        margin-bottom: -5vh;
+    background-color: {{bg_color}};
+    }
+    #img{
+        display: block;
+        margin-left:auto;
+        margin-right:auto;
 
-            width: 100%;
-            height: 100%;
-        }
-        h1{
-            font-family: Gill Sans;
-            font-weight: bold;
-            display: block;
-            text-align: center;
-            background-color: {{bg_color}};
-            color: {{txt_color}};
-            position: fixed;
-            alignment: center;
-            width: 100vw;
-            font-size: 2.5vh;
-            margin-top: 50vh;
-            z-index: 8;
+        width: 100%;
+        height: 100%;
+    }
+    h1{
+        font-family: Gill Sans;
+        font-weight: bold;
+        display: block;
+        text-align: center;
+    background-color: {{bg_color}};
+    color: {{txt_color}};
+    position: fixed;
+    alignment: center;
+    width: 100vw;
+    font-size: 2.5vh;
+    margin-top: 50vh;
+    z-index: 8;
 
-        }
-        #lyrics{
-            font-family: "Gill Sans";
-            text-align: center;
-            display: block;
-            position: absolute;
-            width: 100vw;
-            margin-top: 53.6vh;
-            font-size: 2.5vh;
-            background-color: {{bg_color}};
-            color: {{txt_color}} !important;
-        }
+    }
+    #lyrics{
+        font-family: "Gill Sans";
+        text-align: center;
+        display: block;
+        position: absolute;
+        width: 100vw;
+        margin-top: 53.6vh;
+        font-size: 2.5vh;
+    background-color: {{bg_color}};
+    color: {{txt_color}} !important;
+    }
     }
     pre {
         overflow-x: auto;
