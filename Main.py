@@ -25,7 +25,7 @@ def login():
 @app.route("/login")
 def log():
     return redirect(
-                    "https://accounts.spotify.com/authorize?client_id=" + CLIENT_ID + "&response_type=code&redirect_uri=https://spoflyv1.herokuapp.com/callback&scope=user-read-private user-read-email user-read-currently-playing user-modify-playback-state")
+        "https://accounts.spotify.com/authorize?client_id=" + CLIENT_ID + "&response_type=code&redirect_uri=https://spoflyv1.herokuapp.com/callback&scope=user-read-private user-read-email user-read-currently-playing user-modify-playback-state")
 
 
 @app.route("/callback")
@@ -42,10 +42,10 @@ def token():
     session['headers'] = {"Authorization": "Basic {}".format(base64encoded)}
     post_request = requests.post("https://accounts.spotify.com/api/token", data=session['code_payload'],
                                  headers=session['headers'])
-                                 response_data = json.loads(post_request.text)
-session['access_token'] = response_data['access_token']
-session['authorization_header'] = {'Authorization': 'Bearer {}'.format(session['access_token'])}
-return redirect("/lyrics")
+    response_data = json.loads(post_request.text)
+    session['access_token'] = response_data['access_token']
+    session['authorization_header'] = {'Authorization': 'Bearer {}'.format(session['access_token'])}
+    return redirect("/lyrics")
 
 
 @app.route("/lyrics")
@@ -55,15 +55,15 @@ def init():
         headers = {
             "Authorization": "Bearer {}".format(session['access_token'])
         }
-        
+
         spotify = requests.get("https://api.spotify.com/v1/me/player/currently_playing", headers=headers)
-        if spotify.status_code == 204:
+        if spotify.status_code==204:
             return redirect("/favs")
+
         while spotify.status_code != 200:
             spotify = spotify = requests.get("https://api.spotify.com/v1/me/player/currently_playing", headers=headers)
         current_song = spotify.json()
         song_id = current_song['item']['id']
-        
         song_title = current_song['item']['name']
         artist_name = current_song['item']['artists'][0]['name']
         duration_ms = current_song['item']['duration_ms']
@@ -72,50 +72,50 @@ def init():
         if refresh_ms < 0:
             refresh_ms *= -1
 
-if current_song['item']['is_local'] == bool(0):
-    context = ssl._create_unverified_context()
-    image_url = current_song['item']['album']['images'][0]['url']
-    fd = urllib.request.urlopen(image_url, context=context)
-    f = io.BytesIO(fd.read())
-    color_thief = ColorThief(f)
-    palette = color_thief.get_palette(color_count=6)
-    
-    def rgb2hex(r, g, b):
-        return "#{:02x}{:02x}{:02x}".format(r, g, b)
-            
+        if current_song['item']['is_local'] == bool(0):
+            context = ssl._create_unverified_context()
+            image_url = current_song['item']['album']['images'][0]['url']
+            fd = urllib.request.urlopen(image_url,context=context)
+            f = io.BytesIO(fd.read())
+            color_thief = ColorThief(f)
+            palette = color_thief.get_palette(color_count=6)
+
+            def rgb2hex(r, g, b):
+                return "#{:02x}{:02x}{:02x}".format(r, g, b)
+
+
             a = 1 - (0.299 * palette[0][0] + 0.587 * palette[0][1] + 0.114 * palette[0][2]) / 255
             print(a)
-            if a < 0.5:
-                col_2 = "#000000"
+            if a<0.5:
+                col_2="#000000"
             else:
-                col_2 = "#FFFFFF"
-        
-        col_1 = rgb2hex(palette[0][0], palette[0][1], palette[0][2])
+                col_2="#FFFFFF"
+
+            col_1 = rgb2hex(palette[0][0],palette[0][1],palette[0][2])
+
+
             if song_title and artist_name:
                 song = genius.search_song(title=song_title, artist=artist_name)
-                
-                if song != None:
+
+                if song!=None:
                     lyrics = song.lyrics
-                
+
                 else:
                     lyrics = "lyrics not found"
-        
-        else:
-            lyrics = "if you are playing a local file please edit metadata"
-            
-            return render_template("home.html", bg_color=col_1, txt_color=col_2, data=lyrics, artist_name=artist_name,
-                                   song_title=song_title,
+
+            else:
+                lyrics = "if you are playing a local file please edit metadata"
+
+            return render_template("home.html",bg_color=col_1,txt_color=col_2, data=lyrics, artist_name=artist_name, song_title=song_title,
                                    image=image_url, refresh_ms=refresh_ms)
-        
+
         else:
-            return render_template("404.html", data="you have reached the end of the internet ",
-                                   artist_name=artist_name, song_title=song_title, refresh_ms=refresh_ms)
+            return render_template("404.html",data= "you have reached the end of the internet ",artist_name=artist_name,song_title=song_title,refresh_ms=refresh_ms)
 
 
 
-else:
-    return redirect("/login")
-
+    else:
+        return redirect("/login")
 
 @app.route("/next")
 def next():
@@ -140,8 +140,8 @@ def favs():
 @app.route("/trck1")
 def rec1():
     headers = {"Authorization": "Bearer {}".format(session['access_token']), 'Accept': 'application/json',
-        "Content-Type": "application/json"}
-    
+               "Content-Type": "application/json"}
+
     body = {
         "context_uri": "spotify:playlist:066MaY4n6cAKnqWarv4kdF",
         "offset": {
