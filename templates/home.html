@@ -12,6 +12,7 @@
 <div id="row">
     <div id="image">
         <a href="https://spoflyv1.herokuapp.com/logout">  <img id="img" src="{{image}}"> </a>
+         <a id="logout_button" href="http://localhost:5000/logout">LOGOUT </a>
     </div>
 
     <div id='lyric_section'>
@@ -26,6 +27,20 @@
         body{
         background-color: {{bg_color}}
     }
+    #logout_button{
+
+            font-size: 3vw;
+            margin-left: 20vw;
+            hight:25vh;
+            width: 50vw;
+
+            font-family: "Gill Sans";
+            color: {{txt_color}};
+
+        }
+        #logout_button:hover{
+            -webkit-animation: logout 1s forwards;
+        }
     #row{
         display:flex;
     background-color: {{bg_color}};

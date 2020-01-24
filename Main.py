@@ -8,7 +8,7 @@ from colorthief import ColorThief
 import urllib.request
 import io
 import ssl
-
+app
 app = Flask(__name__)
 app.secret_key = os.urandom(20)
 CLIENT_ID = "e6cd36c6ea1c44b09245097b9e3367e1"
