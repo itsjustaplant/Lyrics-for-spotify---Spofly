@@ -91,7 +91,7 @@ def init():
                 col_2="#FFFFFF"
 
             col_1 = rgb2hex(palette[0][0],palette[0][1],palette[0][2])
-
+            col_3 = rgb2hex(palette[2][0], palette[2][1], palette[2][2])
 
             if song_title and artist_name:
                 song = genius.search_song(title=song_title, artist=artist_name)
@@ -106,7 +106,7 @@ def init():
                 lyrics = "if you are playing a local file please edit metadata"
 
             return render_template("home.html",bg_color=col_1,txt_color=col_2, data=lyrics, artist_name=artist_name, song_title=song_title,
-                                   image=image_url, refresh_ms=refresh_ms)
+                                   image=image_url, refresh_ms=refresh_ms, shadow=col_3)
 
         else:
             return render_template("404.html",data= "you have reached the end of the internet ",artist_name=artist_name,song_title=song_title,refresh_ms=refresh_ms)
