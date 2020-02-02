@@ -97,6 +97,19 @@
         background-color: {{bg_color}};
         margin-top: -0.001vh;
     }
+    #logout_button{
+        alignment: center;
+        text-align: center;
+        z-index: -1;
+        margin-top: -50vw;
+        margin-left: 40vw;
+        color: {{txt_color}};
+        position: absolute;
+        opacity: 1;
+        font-size: 2.5vh;
+
+
+    }
     #image{
         position: fixed;
         alignment: center;
@@ -115,6 +128,17 @@
         width: 100%;
         height: 100%;
     }
+    #image:hover img{
+            opacity: 0;
+            transition: 0.5s ease;
+            visibility: hidden;
+
+        }
+        #image:hover #logout_button{
+            opacity: 1;
+            transition: 0.5s ease-in-out;
+            z-index: 9;
+        }
     h1{
         font-family: Gill Sans;
         font-weight: bold;
