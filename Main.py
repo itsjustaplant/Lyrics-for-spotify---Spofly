@@ -14,6 +14,7 @@ app.secret_key = os.urandom(20)
 CLIENT_ID = "e6cd36c6ea1c44b09245097b9e3367e1"
 CLIENT_SECRET = "94c8b9efa0f34440b7c3225b75ff0b37"
 SPOTIFY_URL = "https://accounts.spotify.com"
+SPOTIFY_API_URL = "https://api.spotify.com"
 GENIUS_URL = "https://www.genius.com/"
 REDIRECT_URI = "https://spoflyv1.herokuapp.com/callback"
 genius = lyricsgenius.Genius("YXICHA95DGXKPPPkXp-iSddKqjf93dOfxM30rG2s168h6t721l6WGcDt8KpGVO7G")
@@ -63,7 +64,7 @@ def init():
             return redirect("/favs")
 
         while spotify.status_code != 200:
-            spotify = spotify = requests.get(SPOTIFY_URL+"/v1/me/player/currently_playing", headers=headers)
+            spotify = spotify = requests.get(SPOTIFY_API_URL+"/v1/me/player/currently_playing", headers=headers)
         current_song = spotify.json()
 
         song_title = current_song['item']['name']
@@ -131,7 +132,7 @@ def favs():
 
 
 @app.route("/trck1")
-def rec1():
+def play_list():
     headers = {"Authorization": "Bearer {}".format(session['access_token']), 'Accept': 'application/json',
                "Content-Type": "application/json"}
 
@@ -143,7 +144,7 @@ def rec1():
         "position_ms": 0
     }
     body_json = json.dumps(body)
-    list_req_respond = requests.put(url=SPOTIFY_URL+"/v1/me/player/play", headers=headers, data=body_json)
+    list_req_respond = requests.put(url=SPOTIFY_API_URL+"/v1/me/player/play", headers=headers, data=body_json)
     return redirect("/login")
 
 
