@@ -11,13 +11,14 @@ import ssl
 app = Flask(__name__)
 app.secret_key = os.urandom(20)
 
-CLIENT_ID = "e6cd36c6ea1c44b09245097b9e3367e1"
-CLIENT_SECRET = "94c8b9efa0f34440b7c3225b75ff0b37"
+CLIENT_ID = "94bc89eaaa30437aba608352e9de4565"
+CLIENT_SECRET = "77765644dc0140e99da1113454e42c29"
 SPOTIFY_URL = "https://accounts.spotify.com"
 SPOTIFY_API_URL = "https://api.spotify.com"
 GENIUS_URL = "https://www.genius.com/"
 REDIRECT_URI = "https://spoflyv1.herokuapp.com/callback"
-genius = lyricsgenius.Genius("YXICHA95DGXKPPPkXp-iSddKqjf93dOfxM30rG2s168h6t721l6WGcDt8KpGVO7G")
+LOCAL_URI = "127.0.0.1:5000/callback"
+genius = lyricsgenius.Genius("uU4CpVCElElrkZpU7MryYDOwXJP-iJ7-dkskucXYNtVIDcr-AeQ1nlD_o0qKp4iv")
 
 
 @app.route("/")
@@ -28,7 +29,7 @@ def login():
 @app.route("/login")
 def log():
     return redirect(
-        SPOTIFY_URL+"/authorize?client_id=" + CLIENT_ID + "&response_type=code&redirect_uri=https://spoflyv1.herokuapp.com/callback&scope=user-read-private user-read-email user-read-currently-playing user-modify-playback-state")
+        SPOTIFY_URL+"/authorize?client_id=" + CLIENT_ID + "&response_type=code&redirect_uri=" + REDIRECT_URI + "&scope=user-read-private user-read-email user-read-currently-playing user-modify-playback-state")
 
 
 @app.route("/callback")
