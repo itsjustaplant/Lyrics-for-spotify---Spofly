@@ -24,8 +24,6 @@ genius = lyricsgenius.Genius("uU4CpVCElElrkZpU7MryYDOwXJP-iJ7-dkskucXYNtVIDcr-Ae
 @app.route("/")
 def login():
     return render_template("login.html")
-
-
 @app.route("/login")
 def log():
     return redirect(
@@ -34,7 +32,6 @@ def log():
         + "&response_type=code&redirect_uri="
         + LOCAL_URI
         + "&scope=user-read-private user-read-email user-read-currently-playing user-modify-playback-state")
-
 
 @app.route("/callback")
 def token():
