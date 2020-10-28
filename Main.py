@@ -23,13 +23,17 @@ genius = lyricsgenius.Genius("uU4CpVCElElrkZpU7MryYDOwXJP-iJ7-dkskucXYNtVIDcr-Ae
 
 @app.route("/")
 def login():
-    return render_template(("login.html"))
+    return render_template("login.html")
 
 
 @app.route("/login")
 def log():
     return redirect(
-        SPOTIFY_URL+"/authorize?client_id=" + CLIENT_ID + "&response_type=code&redirect_uri=" + REDIRECT_URI + "&scope=user-read-private user-read-email user-read-currently-playing user-modify-playback-state")
+        SPOTIFY_URL + "/authorize?client_id="
+        + CLIENT_ID
+        + "&response_type=code&redirect_uri="
+        + LOCAL_URI
+        + "&scope=user-read-private user-read-email user-read-currently-playing user-modify-playback-state")
 
 
 @app.route("/callback")
@@ -38,13 +42,13 @@ def token():
     session['code_payload'] = {
         'grant_type': 'authorization_code',
         'code': str(session['auth_token']),
-        'redirect_uri': REDIRECT_URI
+        'redirect_uri': LOCAL_URI
     }
     base = "{}:{}"
     format_client = base.format(CLIENT_ID, CLIENT_SECRET)
     base64encoded = base64.urlsafe_b64encode(format_client.encode()).decode()
     session['headers'] = {"Authorization": "Basic {}".format(base64encoded)}
-    post_request = requests.post(SPOTIFY_URL+"/api/token", data=session['code_payload'],
+    post_request = requests.post(SPOTIFY_URL + "/api/token", data=session['code_payload'],
                                  headers=session['headers'])
     response_data = json.loads(post_request.text)
     session['access_token'] = response_data['access_token']
@@ -60,12 +64,11 @@ def init():
             "Authorization": "Bearer {}".format(session['access_token'])
         }
 
-        spotify = requests.get(SPOTIFY_URL+"/v1/me/player/currently_playing", headers=headers)
-        if spotify.status_code==204:
+        spotify = requests.get(SPOTIFY_URL + "/v1/me/player/currently_playing", headers=headers)
+        if spotify.status_code == 204:
             return redirect("/favs")
-
         while spotify.status_code != 200:
-            spotify = spotify = requests.get(SPOTIFY_API_URL+"/v1/me/player/currently_playing", headers=headers)
+            spotify = spotify = requests.get(SPOTIFY_API_URL + "/v1/me/player/currently_playing", headers=headers)
         current_song = spotify.json()
 
         song_title = current_song['item']['name']
@@ -84,24 +87,24 @@ def init():
             color_thief = ColorThief(f)
             palette = color_thief.get_palette(color_count=6)
 
-            #function to transfor rgb to hex format
+            # function to transform rgb to hex format
             def rgb2hex(r, g, b):
                 return "#{:02x}{:02x}{:02x}".format(r, g, b)
 
-            ###luminance for color of lyrics
+            # luminance for color of lyrics
             luminance = 1 - (0.299 * palette[0][0] + 0.587 * palette[0][1] + 0.114 * palette[0][2]) / 255
-            if luminance<0.5:
-                col_2="#000000"
+            if luminance < 0.5:
+                col_2 = "#000000"
             else:
-                col_2="#FFFFFF"
+                col_2 = "#FFFFFF"
 
-            col_1 = rgb2hex(palette[0][0],palette[0][1],palette[0][2])
+            col_1 = rgb2hex(palette[0][0], palette[0][1], palette[0][2])
             col_3 = rgb2hex(palette[2][0], palette[2][1], palette[2][2])
 
             if song_title and artist_name:
                 song = genius.search_song(title=song_title, artist=artist_name)
 
-                if song!=None:
+                if song is not None:
                     lyrics = song.lyrics
 
                 else:
@@ -110,16 +113,32 @@ def init():
             else:
                 lyrics = "if you are playing a local file please edit metadata"
 
-            return render_template("home.html",bg_color=col_1,txt_color=col_2, data=lyrics, artist_name=artist_name, song_title=song_title,
+            return render_template("home.html", bg_color=col_1, txt_color=col_2, data=lyrics, artist_name=artist_name,
+                                   song_title=song_title,
                                    image=image_url, refresh_ms=refresh_ms, shadow=col_3)
 
         else:
-            return render_template("404.html",data= "you have reached the end of the internet ",artist_name=artist_name,song_title=song_title,refresh_ms=refresh_ms)
-
-
-
+            return render_template("404.html", data="you have reached the end of the internet ",
+                                   artist_name=artist_name, song_title=song_title, refresh_ms=refresh_ms)
     else:
         return redirect("/login")
+
+
+@app.route("/previous")
+def previous():
+    headers = {"Authorization": "Bearer {}".format(session['access_token']), 'Accept': 'application/json',
+               "Content-Type": "application/json"}
+    requests.post(url="https://api.spotify.com/v1/me/player/previous", headers=headers)
+    return redirect("/lyrics")
+
+
+@app.route("/next")
+def next():
+    headers = {"Authorization": "Bearer {}".format(session['access_token']), 'Accept': 'application/json',
+               "Content-Type": "application/json"}
+    requests.post(url="https://api.spotify.com/v1/me/player/next", headers=headers)
+    return redirect("/lyrics")
+
 
 @app.route("/logout")
 def logout():
@@ -145,7 +164,7 @@ def play_list():
         "position_ms": 0
     }
     body_json = json.dumps(body)
-    list_req_respond = requests.put(url=SPOTIFY_API_URL+"/v1/me/player/play", headers=headers, data=body_json)
+    requests.put(url=SPOTIFY_API_URL + "/v1/me/player/play", headers=headers, data=body_json)
     return redirect("/login")
 
 
