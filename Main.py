@@ -33,7 +33,7 @@ def log():
         SPOTIFY_URL + "/authorize?client_id="
         + CLIENT_ID
         + "&response_type=code&redirect_uri="
-        + LOCAL_URI
+        + REDIRECT_URI
         + "&scope=user-read-private user-read-email user-read-currently-playing user-modify-playback-state")
 
 
@@ -43,7 +43,7 @@ def token():
     session['code_payload'] = {
         'grant_type': 'authorization_code',
         'code': str(session['auth_token']),
-        'redirect_uri': LOCAL_URI
+        'redirect_uri': REDIRECT_URI
     }
     base = "{}:{}"
     format_client = base.format(CLIENT_ID, CLIENT_SECRET)
