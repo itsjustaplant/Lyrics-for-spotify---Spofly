@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="../static/spofly-icon.png">
     <title>Login</title>
 </head>
 <body>
-<a href="https://spoflyv1.herokuapp.com/login"><img id="login"  src="/static/login-button-v2.png" alt="login button"></a>
-<a><img id="about" src="/static/about-button.png" alt="about button"></a>
+<a href="https://spoflyv1.herokuapp.com/login"><img id="login"  src="../static/login-button-v2.png" alt="login button"></a>
+<p class="info">Hey all, i realized that more than 25 peep using my hobby project.
+I know... that site is little slow. So i decided to build a desktop app.</p>
+<a class="info" href="https://github.com/itsjustaplant/spofly">Github Link</a>
 </body>
 <style>
     @media screen {
         body{
-            background-color: #2f3032 !important;
+            background-color: #212121 !important;
         }
         #login{
             margin-top: 30vh;
@@ -23,12 +26,11 @@
             position: relative;
             display: flex;
         }
-        #about{
+        .info{
+            margin-top: 10px;
             margin-left: 35vw;
-            height: 17vh;
-            width: 30vw;
-            position: relative;
-            display: flex;
+            margin-right: 35vw;
+            color: #FAFAFA !important;
         }
     }
 </style>
