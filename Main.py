@@ -1,13 +1,14 @@
-from flask import Flask, render_template, redirect, request, session
-import requests
-import json
 import base64
-import lyricsgenius
-import os
-from colorthief import ColorThief
-import urllib.request
 import io
+import json
+import os
 import ssl
+import urllib.request
+
+import lyricsgenius
+import requests
+from colorthief import ColorThief
+from flask import Flask, render_template, redirect, request, session
 
 app = Flask(__name__)
 app.secret_key = os.urandom(20)
@@ -114,7 +115,7 @@ def init():
             else:
                 lyrics = "if you are playing a local file please edit metadata"
 
-            return render_template("home.html", bg_color=col_1, txt_color=col_2, data=lyrics, artist_name=artist_name,
+            return render_template("lyrics.html", bg_color=col_1, txt_color=col_2, data=lyrics, artist_name=artist_name,
                                    song_title=song_title,
                                    image=image_url, refresh_ms=refresh_ms, shadow=col_3)
 
@@ -125,49 +126,10 @@ def init():
         return redirect("/login")
 
 
-@app.route("/previous")
-def previous():
-    headers = {"Authorization": "Bearer {}".format(session['access_token']), 'Accept': 'application/json',
-               "Content-Type": "application/json"}
-    requests.post(url="https://api.spotify.com/v1/me/player/previous", headers=headers)
-    return redirect("/lyrics")
-
-
-@app.route("/next")
-def next():
-    headers = {"Authorization": "Bearer {}".format(session['access_token']), 'Accept': 'application/json',
-               "Content-Type": "application/json"}
-    requests.post(url="https://api.spotify.com/v1/me/player/next", headers=headers)
-    return redirect("/lyrics")
-
-
 @app.route("/logout")
 def logout():
     session.clear()
     return redirect("/")
-
-
-@app.route("/favs")
-def favs():
-    return render_template("favs.html")
-
-
-@app.route("/trck1")
-def play_list():
-    headers = {"Authorization": "Bearer {}".format(session['access_token']), 'Accept': 'application/json',
-               "Content-Type": "application/json"}
-
-    body = {
-        "context_uri": "spotify:playlist:066MaY4n6cAKnqWarv4kdF",
-        "offset": {
-            "position": 6
-        },
-        "position_ms": 0
-    }
-    body_json = json.dumps(body)
-    requests.put(url=SPOTIFY_API_URL + "/v1/me/player/play", headers=headers, data=body_json)
-    return redirect("/login")
-
 
 if __name__ == '__main__':
     app.run()

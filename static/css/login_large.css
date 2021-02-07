@@ -1,0 +1,95 @@
+@media only screen
+    and (min-width: 426px)
+    {
+    #body{
+        background-color: #FAFAFA;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        scrollbar-width: none;
+    }
+    #main{
+        margin-top: 15vh;
+        margin-left: 10vh;
+        display: flex;
+        width: 80vw;
+        background-color: #FAFAFA;
+        justify-content: center;
+    }
+    #div-left{
+        width: 40%;
+        height: 100vh;
+        text-align: center;
+    }
+    #div-left-top{
+        float: left;
+        width: 100%;
+        color: #212121;
+        font-size: 3.5vw;
+        font-family: 'Quicksand', serif;
+    }
+    #greeting{
+        margin-left: 10px;
+    }
+    #spofly{
+        font-weight: bold;
+        margin-left: 10px;
+        height: 3.5vw;
+    }
+    #div-left-mid{
+        float: left;
+        width: 100%;
+        height: 50vh;
+        position: relative;
+        font-family: 'Open Sans', sans-serif;
+        color: #212121;
+        margin-top: 10vh;
+    }
+    #login-frame{
+        height: 100%;
+    }
+    .flat-button{
+        margin-left: 10px;
+        color: #212121;
+        background-color: transparent;
+        border: 2px solid;
+        font-size: 2.5vw;
+        border-radius: 8px;
+    }
+    #login-button{
+        outline: none;
+        width: 80%;
+    }
+    #download-button{
+        margin-top: 5px;
+        outline: none;
+        width: 80%;
+    }
+    #apple-emoji{
+        font-size: 2.6vw;
+    }
+    #div-left-bottom{
+        position: relative;
+        float: left;
+        height: 10vh;
+        text-align: center;
+        width: 100%;
+    }
+    #trademark{
+        text-decoration: none;
+        color: #212121;
+        font-size: 1.5vw;
+        font-family: 'Quicksand', serif;
+        text-align: center;
+    }
+    #div-right{
+        float: right;
+        width: 60%;
+        height: 100vh;
+        margin-top: -15vh;
+    }
+    #artwork{
+        height: 1000px;
+        width: 1000px;
+    }
+}
