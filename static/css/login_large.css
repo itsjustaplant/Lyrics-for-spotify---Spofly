@@ -1,23 +1,19 @@
 @media only screen
-    and (min-width: 426px)
-    {
+and (min-width: 426px)
+{
     #body{
         background-color: #FAFAFA;
         width: 100vw;
         height: 100vh;
         overflow: hidden;
-        scrollbar-width: none;
     }
     #main{
-        margin-top: 15vh;
-        margin-left: 10vh;
         display: flex;
-        width: 80vw;
         background-color: #FAFAFA;
         justify-content: center;
     }
     #div-left{
-        width: 40%;
+        width: 45%;
         height: 100vh;
         text-align: center;
     }
@@ -27,13 +23,13 @@
         color: #212121;
         font-size: 3.5vw;
         font-family: 'Quicksand', serif;
+        height: 20vh;
     }
     #greeting{
-        margin-left: 10px;
+
     }
     #spofly{
         font-weight: bold;
-        margin-left: 10px;
         height: 3.5vw;
     }
     #div-left-mid{
@@ -43,13 +39,11 @@
         position: relative;
         font-family: 'Open Sans', sans-serif;
         color: #212121;
-        margin-top: 10vh;
     }
     #login-frame{
         height: 100%;
     }
     .flat-button{
-        margin-left: 10px;
         color: #212121;
         background-color: transparent;
         border: 2px solid;
@@ -57,6 +51,7 @@
         border-radius: 8px;
     }
     #login-button{
+        margin-top: 20vh;
         outline: none;
         width: 80%;
     }
@@ -71,9 +66,10 @@
     #div-left-bottom{
         position: relative;
         float: left;
-        height: 10vh;
+        height: 30vh;
         text-align: center;
         width: 100%;
+        margin-top: 20vh;
     }
     #trademark{
         text-decoration: none;
@@ -84,12 +80,49 @@
     }
     #div-right{
         float: right;
-        width: 60%;
+        width: 55%;
         height: 100vh;
-        margin-top: -15vh;
     }
-    #artwork{
+    .artwork{
+        position:absolute;
+        top:0;
+        -webkit-animation-name: fade;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-duration: 18s;
+        animation-name: fade;
+        animation-iteration-count: infinite;
+        animation-duration: 24s;
+    }
+    #artwork-3 {
+        background-color: lightblue;
         height: 1000px;
         width: 1000px;
     }
+    #artwork-2 {
+        -webkit-animation-delay: -18s;
+        background-color: yellow;
+        height: 1000px;
+        width: 1000px;
+    }
+    #artwork-1 {
+        -webkit-animation-delay: -9s;
+        background-color: lightgreen;
+        height: 1000px;
+        width: 1000px;
+    }
+}
+
+@-webkit-keyframes fade {
+    0% {opacity: 0;}
+    20% {opacity: 1;}
+    33% {opacity: 1;}
+    53% {opacity: 0;}
+    100% {opacity: 0;}
+}
+@keyframes fade {
+    0% {opacity: 0;}
+    20% {opacity: 1;}
+    33% {opacity: 1;}
+    53% {opacity: 0;}
+    100% {opacity: 0;}
 }
