@@ -6,6 +6,8 @@ const setImage = () => {
     const div_left = document.getElementById('div-left')
     const trademark = document.getElementById('trademark')
     const main = document.getElementById('main')
+    const apple_logo = document.getElementById('apple-emoji')
+    const spotify_icon = document.getElementById('spotify-icon')
 
     const artworks = [
        "https://i.scdn.co/image/ab67616d0000b2731d7dc9072977fd651a68cee7",
@@ -37,9 +39,18 @@ const setImage = () => {
     artwork.src = artworks[random]
     body.style.backgroundColor = colours[random][0]
     main.style.backgroundColor = colours[random][0]
-    login_button.style.color = colours[random][1]
-    download_button.style.color = colours[random][1]
+    login_button.style.color = colours[random][0]
+    download_button.style.color = colours[random][0]
+    login_button.style.backgroundColor = colours[random][1]
+    download_button.style.backgroundColor = colours[random][1]
     div_left.style.color = colours[random][1]
     trademark.style.color = colours[random][1]
+    if(colours[random][1] === "#FAFAFA"){
+        apple_logo.style.color = "#212121"
+        spotify_icon.src = "../static/images/Spotify_Icon_RGB_Black.png"
+    } else{
+        apple_logo.style.color = "#FAFAFA"
+        spotify_icon.src = "../static/images/Spotify_Icon_RGB_White.png"
+    }
 }
 setImage()

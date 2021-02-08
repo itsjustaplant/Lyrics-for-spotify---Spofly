@@ -2,11 +2,9 @@
 and (min-width: 769px)
 {
     #body{
-        background-color: #FAFAFA;
         width: 100vw;
         height: 100vh;
         overflow: hidden;
-        --text-colour: #212121;
     }
     #main{
         display: flex;
@@ -42,20 +40,35 @@ and (min-width: 769px)
     .flat-button{
         background-color: transparent;
         border: 2px solid;
-        font-size: 2.5vw;
+        font-size: 2.4vw;
         border-radius: 8px;
+        cursor: pointer;
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
+    .flat-button:hover{
+        transform: scale(1.1);
     }
     #login-button{
-        color: var(--text-colour);
         margin-top: 20vh;
         outline: none;
         width: 50%;
+        transition: transform 0.3s ease-in-out;
+    }
+    #logo-container{
+        vertical-align: middle;
+        width: 20%;
+    }
+    #spotify-icon{
+        height: 2.3vw;
+        width: 2.3vw;
+        vertical-align: center;
     }
     #download-button{
-        color: var(--text-colour);
-        margin-top: 5px;
+        margin-top: 10px;
         outline: none;
         width: 50%;
+        transition: transform 0.3s ease-in-out;
     }
     #apple-emoji{
         font-size: 2.6vw;
