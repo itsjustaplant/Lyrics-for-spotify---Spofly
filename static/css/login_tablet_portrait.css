@@ -1,0 +1,122 @@
+@media only screen
+and (min-width: 600px)
+and (max-width: 1023px)
+{
+    #body{
+        background-color: #FAFAFA;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+    #main{
+        display: flex;
+        background-color: #FAFAFA;
+        justify-content: center;
+    }
+    #div-left{
+        width: auto;
+        float: none;
+        text-align: center;
+        margin-top: 100vw;
+    }
+    #div-left-top{
+        color: #212121;
+        font-size: 3.5vw;
+        font-family: 'Quicksand', serif;
+        height: 20vh;
+    }
+    #greeting{
+
+    }
+    #spofly{
+        font-weight: bold;
+        height: 3.5vw;
+    }
+    #div-left-mid{
+        height: 50vh;
+        position: relative;
+        font-family: 'Open Sans', sans-serif;
+        color: #212121;
+    }
+    #login-frame{
+        height: 100%;
+    }
+    .flat-button{
+        color: #212121;
+        background-color: transparent;
+        border: 2px solid;
+        font-size: 2.5vw;
+        border-radius: 8px;
+    }
+    #login-button{
+        margin-top: 20vh;
+        outline: none;
+        width: 80%;
+    }
+    #download-button{
+        margin-top: 5px;
+        outline: none;
+        width: 80%;
+    }
+    #apple-emoji{
+        font-size: 2.6vw;
+    }
+    #div-left-bottom{
+        position: relative;
+        height: 30vh;
+        text-align: center;
+        margin-top: 25vh;
+    }
+    #trademark{
+        text-decoration: none;
+        color: #212121;
+        font-size: 1.5vw;
+        font-family: 'Quicksand', serif;
+        text-align: center;
+    }
+    #div-right{
+        float: none;
+    }
+    .artwork{
+        position:absolute;
+        top:0;
+        -webkit-animation-name: fade;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-duration: 18s;
+        animation-name: fade;
+        animation-iteration-count: infinite;
+        animation-duration: 24s;
+    }
+    #artwork-3 {
+        background-color: lightblue;
+        height: 1000px;
+        width: 1000px;
+    }
+    #artwork-2 {
+        -webkit-animation-delay: -18s;
+        background-color: yellow;
+        height: 1000px;
+        width: 1000px;
+    }
+    #artwork-1 {
+        -webkit-animation-delay: -9s;
+        background-color: lightgreen;
+        height: 1000px;
+        width: 1000px;
+    }
+}
+
+@-webkit-keyframes fade {
+    0% {opacity: 0;}
+    20% {opacity: 1;}
+    33% {opacity: 1;}
+    53% {opacity: 0;}
+    100% {opacity: 0;}
+}
+@keyframes fade {
+    0% {opacity: 0;}
+    20% {opacity: 1;}
+    33% {opacity: 1;}
+    53% {opacity: 0;}
+    100% {opacity: 0;}
+}
