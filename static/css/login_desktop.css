@@ -1,5 +1,5 @@
 @media only screen
-and (min-width: 426px)
+and (min-width: 769px)
 {
     #body{
         background-color: #FAFAFA;
@@ -69,7 +69,7 @@ and (min-width: 426px)
         height: 30vh;
         text-align: center;
         width: 100%;
-        margin-top: 20vh;
+        margin-top: 25vh;
     }
     #trademark{
         text-decoration: none;
