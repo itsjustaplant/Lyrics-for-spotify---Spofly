@@ -39,9 +39,9 @@ and (min-width: 769px)
     }
     .flat-button{
         background-color: transparent;
-        border: 2px solid;
         font-size: 2.4vw;
         border-radius: 8px;
+        border-color: transparent;
         cursor: pointer;
         padding-bottom: 20px;
         padding-top: 20px;
@@ -55,7 +55,7 @@ and (min-width: 769px)
         width: 50%;
         transition: transform 0.3s ease-in-out;
     }
-    #logo-container{
+    .logo-container{
         vertical-align: middle;
         width: 20%;
     }
@@ -70,11 +70,13 @@ and (min-width: 769px)
         width: 50%;
         transition: transform 0.3s ease-in-out;
     }
-    #apple-emoji{
-        font-size: 2.6vw;
+    #apple-logo{
+        height: 2.3vw;
+        width: 2.3vw;
+        vertical-align: center;
     }
     #div-left-bottom{
-        position: relative;
+        position:    relative;
         float: left;
         height: 30vh;
         text-align: center;
