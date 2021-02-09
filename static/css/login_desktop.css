@@ -12,7 +12,7 @@ and (min-width: 769px)
         justify-content: center;
     }
     #div-left{
-        width: 45%;
+        width: 40%;
         height: 100vh;
         text-align: center;
     }
@@ -89,14 +89,25 @@ and (min-width: 769px)
     }
     #div-right{
         float: left;
-        width: 55%;
+        width: 60%;
         height: 100vh;
     }
     #artwork-1 {
         position: absolute;
         top: 0;
-        height: 900px;
-        width: 900px;
+        height: 800px;
+        width: 800px;
+    }
+    #track-embed{
+        position: absolute;
+        transition: all 1s ease-in-out;
+        margin-top: 88vh;
+        opacity: 0;
+        z-index: 1;
+        border: none;
+    }
+    #div-right:hover > #track-embed{
+        opacity: 100%;
     }
 }
 
