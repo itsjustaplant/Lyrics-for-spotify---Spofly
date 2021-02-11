@@ -10,26 +10,20 @@
     <title>Login</title>
 </head>
 <body id="body">
-<div id="main">
-    <div id="div-left">
-        <div id="div-left-top">
-            <p id="greeting">Hi, this is <strong>spofly</strong></p>
-        </div>
-        <div id="div-left-mid">
-            <div id="login-frame">
-                <button class="flat-button" id="login-button" onclick=window.location.href='/login'><a id="login-text">Login with </a><a class="logo-container"><img id="spotify-icon" src="" alt="spotify"></a></button>
-                <button class="flat-button" id="download-button" onclick=window.location.href="https://github.com/itsjustaplant/spofly/releases"><a>Download </a><a class="logo-container"><img id="apple-logo" src="" alt="osx"></a></button>
-            </div>
-        </div>
-        <div id="div-left-bottom">
-            <a id="trademark" href="https://www.itsjustaplant.github.io">Made by plant🌱</a>
-        </div>
+<div class="main" id="main">
+    <div class="main__left">
+        <a><img class="main__artwork" id="artwork" src="" alt="artwork"></a>
+        <iframe class="main__embed" id="track-embed" src="" width="300" height="80" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
-    <div id="div-right">
-        <a><img id="artwork-1" src="" alt="artwork"></a>
-        <iframe id="track-embed" src="https://open.spotify.com/embed/track/4sI9hj8M0jzbKD9vckx28J" width="300" height="80" allowtransparency="true" allow="encrypted-media"></iframe>
+    <div class="main__right">
+        <p class="main__right__text" id="spofly">Hi, this is <strong>spofly</strong></p>
+        <div class="main__right__container">
+            <button class="flat-button" id="login-button"  onclick=window.location.href='/login'><a>Login with </a><a class="logo-container"><img id="spotify-icon" src="" alt="spotify"></a></button>
+            <button class="flat-button" id="download-button" onclick=window.location.href="https://github.com/itsjustaplant/spofly/releases"><a>Download </a><a class="logo-container"><img id="apple-logo" src="" alt="osx"></a></button>
+        </div>
     </div>
 </div>
+<a class="main__trademark" id="trademark" href="https://www.itsjustaplant.github.io">Made by plant🌱</a>
 </body>
 </html>
 

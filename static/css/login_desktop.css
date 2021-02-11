@@ -1,115 +1,90 @@
 @media only screen
-and (min-width: 769px)
+and (min-width: 1200px)
 {
     #body{
+        overflow: hidden;
+        display: flex;
         width: 100vw;
         height: 100vh;
-        overflow: hidden;
-    }
-    #main{
-        display: flex;
-        background-color: transparent;
         justify-content: center;
     }
-    #div-left{
-        width: 40%;
-        height: 100vh;
-        text-align: center;
+    .main{
+        width: 1200px;
+        height: 600px;
+        margin: auto;
+        display: flex;
     }
-    #div-left-top{
-        float: right;
+    .main__left{
+        width: 600px;
+        height: 600px;
+        justify-content: center;
+    }
+    .main__artwork{
         width: 100%;
-        font-size: 3.5vw;
-        font-family: 'Quicksand', serif;
-        height: 20vh;
-    }
-    #spofly{
-        font-weight: bold;
-        height: 3.5vw;
-    }
-    #div-left-mid{
-        float: left;
-        width: 100%;
-        height: 50vh;
-        position: relative;
-        font-family: 'Quicksand', serif;
-    }
-    #login-frame{
         height: 100%;
+        border-radius: 8px;
+        position: relative;
+    }
+    .main__embed{
+        transition: opacity 0.3s ease-in-out;
+        opacity: 0;
+        z-index: 3;
+        border-radius: 8px;
+        border-color: transparent;
+        position: absolute;
+        margin-left: -601.5px;
+        margin-top: 518px;
+    }
+    .main__left:hover > .main__embed{
+        opacity: 100%;
+    }
+    .main__right{
+        width: 600px;
+        height: 600px;
+        font-family: 'Quicksand', serif;
+        text-align: center;
+        background-color: transparent;
+    }
+   .main__right__text{
+       font-size: 52px;
+   }
+    .main__right__container{
+        margin-top: 100px;
     }
     .flat-button{
-        background-color: transparent;
-        font-size: 2.4vw;
+        font-size: 32px;
         border-radius: 8px;
         border-color: transparent;
         cursor: pointer;
         padding-bottom: 20px;
         padding-top: 20px;
+        transition: transform 0.3s ease-in-out;
+        backface-visibility: hidden;
     }
     .flat-button:hover{
-        transform: scale(1.1);
-    }
-    #login-button{
-        margin-top: 20vh;
-        outline: none;
-        width: 50%;
-        transition: transform 0.3s ease-in-out;
+        transform: scale(1.01);
     }
     .logo-container{
         vertical-align: middle;
-        width: 20%;
     }
     #spotify-icon{
-        height: 2.3vw;
-        width: 2.3vw;
+        width: 32px;
+        height: 32px;
         vertical-align: center;
-    }
-    #download-button{
-        margin-top: 10px;
-        outline: none;
-        width: 50%;
-        transition: transform 0.3s ease-in-out;
     }
     #apple-logo{
-        height: 2.3vw;
-        width: 2.3vw;
+        width: 32px;
+        height: 32px;
         vertical-align: center;
     }
-    #div-left-bottom{
-        position:    relative;
-        float: left;
-        height: 30vh;
-        text-align: center;
-        width: 100%;
-        margin-top: 22vh;
-    }
-    #trademark{
-        text-decoration: none;
-        font-size: 1.5vw;
+    .main__trademark{
+        position: fixed;
         font-family: 'Quicksand', serif;
+        font-weight: lighter;
+        font-size: 20px;
+        text-decoration: none;
+        margin-top: 94vh;
         text-align: center;
-    }
-    #div-right{
-        float: left;
-        width: 60%;
-        height: 100vh;
-    }
-    #artwork-1 {
-        position: absolute;
-        top: 0;
-        height: 900px;
-        width: 900px;
-    }
-    #track-embed{
-        position: absolute;
-        transition: all 1s ease-in-out;
-        margin-top: 88vh;
-        opacity: 0;
-        z-index: 1;
-        border: none;
-    }
-    #div-right:hover > #track-embed{
-        opacity: 100%;
     }
 }
 

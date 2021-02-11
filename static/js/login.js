@@ -1,14 +1,14 @@
 const setImage = () => {
-    const artwork = document.getElementById('artwork-1')
     const body = document.getElementById('body')
+    const main = document.getElementById('main')
+    const artwork = document.getElementById('artwork')
+    const greeting = document.getElementById('spofly')
     const download_button = document.getElementById('download-button')
     const login_button = document.getElementById('login-button')
-    const div_left = document.getElementById('div-left')
-    const trademark = document.getElementById('trademark')
-    const main = document.getElementById('main')
     const spotify_icon = document.getElementById('spotify-icon')
     const spotify_embed = document.getElementById('track-embed')
     const apple_logo = document.getElementById('apple-logo')
+    const trademark = document.getElementById('trademark')
 
     const artworks = [
         "https://i.scdn.co/image/ab67616d0000b2731d7dc9072977fd651a68cee7",
@@ -55,14 +55,15 @@ const setImage = () => {
 
     let random = Math.floor(Math.random() * 12)
 
-    artwork.src = artworks[random]
     body.style.backgroundColor = colours[random][0]
     main.style.backgroundColor = colours[random][0]
+    artwork.src = artworks[random]
+    greeting.style.color = colours[random][1]
     login_button.style.backgroundColor = colours[random][1]
     download_button.style.backgroundColor = colours[random][1]
-    div_left.style.color = colours[random][1]
-    trademark.style.color = colours[random][1]
     spotify_embed.src = embeds[random]
+    trademark.style.color = colours[random][1]
+
     if(colours[random][1] === "#FAFAFA"){
         spotify_icon.src = "../static/images/Spotify_Icon_RGB_Black.png"
         download_button.style.color = "#212121"
