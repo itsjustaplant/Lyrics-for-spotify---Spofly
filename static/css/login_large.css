@@ -1,6 +1,5 @@
 @media only screen and
-(min-width: 1200px) and
-(max-width: 1439px)
+(min-width: 1440px)
 {
     #body{
         overflow: hidden;
@@ -10,8 +9,8 @@
         justify-content: center;
     }
     .main{
-        width: 1200px;
-        height: 600px;
+        width: 1400px;
+        height: 700px;
         margin: auto;
         display: flex;
     }

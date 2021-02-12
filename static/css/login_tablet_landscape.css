@@ -1,6 +1,6 @@
 @media only screen and
-(min-width: 1200px) and
-(max-width: 1439px)
+(min-width: 900px) and
+(max-width: 1199px)
 {
     #body{
         overflow: hidden;
@@ -10,8 +10,8 @@
         justify-content: center;
     }
     .main{
-        width: 1200px;
-        height: 600px;
+        width: 800px;
+        height: 400px;
         margin: auto;
         display: flex;
     }
@@ -64,6 +64,9 @@
     }
     .flat-button:hover{
         transform: scale(1.01);
+    }
+    #download-button{
+        margin-top: 5px;
     }
     .logo-container{
         vertical-align: middle;

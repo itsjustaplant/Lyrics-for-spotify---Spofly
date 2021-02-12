@@ -1,6 +1,7 @@
 @media only screen and
-(max-width: 599px){
-    #body{
+(min-width: 600px) and
+(max-width: 899px){
+     #body{
         overflow: hidden;
         width: 100vw;
         height: 100vh;
