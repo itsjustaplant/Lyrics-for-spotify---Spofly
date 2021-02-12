@@ -2,10 +2,8 @@
 <html lang="en">
 <head>
     <link rel="icon" href={{image}}>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content={{refresh_ms}} http-equiv="refresh">
     <meta charset="UTF-8">
@@ -15,43 +13,13 @@
 <div id="row">
     <div id="image">
         <a> <img id="img" src="{{image}}" alt="cover-art"> </a>
-        <div id="buttons">
-            <a class="material-icons md-48" id="previous" href="http://spoflyv1.herokuapp.com/previous"> skip_previous</a>
-            <a class="material-icons md-48" id="login"    href="http://spoflyv1.herokuapp.com/logout"  > login        </a>
-            <a class="material-icons md-48" id="next"     href="http://spoflyv1.herokuapp.com/next"    > skip_next    </a>
-        </div>
     </div>
-
     <div id='lyric_section'>
         <h1>{{artist_name}}-{{song_title}}</h1>
         <pre id="lyrics"><span>{{ data }}</span></pre>
     </div>
 </div>
 </body>
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
-
-<script>
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  var firebaseConfig = {
-    apiKey: "AIzaSyC1x6iEFZD8wb4NE5JJv4CuhrQevkTTjxI",
-    authDomain: "spofly-362ef.firebaseapp.com",
-    databaseURL: "https://spofly-362ef.firebaseio.com",
-    projectId: "spofly-362ef",
-    storageBucket: "spofly-362ef.appspot.com",
-    messagingSenderId: "908361063963",
-    appId: "1:908361063963:web:6bbeae28041d6b1e4562be",
-    measurementId: "G-3GB2LVJ290"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-</script>
 </html>
 <style>
     @media screen and (min-width: 480px){
@@ -72,7 +40,7 @@
             height: 48px;
             padding-right: 5vw;
         }
-        #login{
+        #main{
             width: 48px;
             height: 48px;
             position: fixed;
@@ -107,7 +75,7 @@
             text-align:center;
             background-color: {{bg_color}};
             color: {{txt_color}} !important;
-            font-family: 'Lato', sans-serif;
+            font-family: 'Quicksand', serif;
             font-size:5vh;
 
         }
@@ -115,7 +83,7 @@
             margin-top:5vh;
             background-color: {{bg_color}};
             color: {{txt_color}} !important;
-            font-family: 'Lato', sans-serif;
+            font-family: 'Quicksand', serif;
             font-size:2.5vh;
         }
         #img{
@@ -164,7 +132,7 @@
             height: 100%;
         }
         h1{
-            font-family: 'Lato', sans-serif;
+            font-family: 'Quicksand', serif;
             font-weight: bold;
             display: block;
             text-align: center;
@@ -178,7 +146,7 @@
             z-index: 8;
         }
         #lyrics{
-            font-family: 'Lato', sans-serif;
+            font-family: 'Quicksand', serif;
             text-align: center;
             display: block;
             position: absolute;
