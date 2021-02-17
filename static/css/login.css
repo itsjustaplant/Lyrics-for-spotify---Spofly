@@ -1,0 +1,434 @@
+@media only screen and
+(max-width: 599px){
+    #body{
+        overflow: hidden;
+        width: 100vw;
+        height: 100vh;
+        overflow-x: auto;
+        margin-left: auto;
+        margin-top: auto;
+        display: flex;
+    }
+    .main{
+        width: 100vw;
+        height: 90vh;
+        font-family: 'Quicksand', serif;
+    }
+    .main__left{
+        width: 100vw;
+        height: 100vw;
+    }
+    .main__artwork{
+        width: 100vw;
+        height: 100vw;
+    }
+    #artwork{
+        width: 100%;
+        height: 100%;
+    }
+    #track-embed{
+        opacity: 0;
+    }
+    .main__right{
+        text-align: center;
+    }
+    .main__right__text{
+        font-size: 28px;
+    }
+    .flat-button{
+        font-size: 16px;
+        border-radius: 8px;
+        border-color: transparent;
+        cursor: pointer;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        transition: transform 0.3s ease-in-out;
+        backface-visibility: hidden;
+        width: auto;
+        outline: none;
+    }
+    .flat-button:hover{
+        transform: scale(1.01);
+        outline: none;
+    }
+     .logo-container{
+        vertical-align: middle;
+    }
+    #spotify-icon{
+        width: 16px;
+        height: 16px;
+        vertical-align: center;
+    }
+    #apple-logo{
+        width: 16px;
+        height: 16px;
+        vertical-align: center;
+    }
+    .main__trademark{
+        position: fixed;
+        font-family: 'Quicksand', serif;
+        font-weight: lighter;
+        font-size: 16px;
+        text-decoration: none;
+        margin-top: 94vh;
+        width: 100%;
+        text-align: center
+    }
+}
+@media only screen and
+(min-width: 600px) and
+(max-width: 899px){
+     #body{
+        overflow: hidden;
+        width: 100vw;
+        height: 100vh;
+        overflow-x: auto;
+        margin-left: auto;
+        margin-top: auto;
+        display: flex;
+    }
+    .main{
+        width: 100vw;
+        height: 90vh;
+        font-family: 'Quicksand', serif;
+    }
+    .main__left{
+        width: 100vw;
+        height: 100vw;
+    }
+    .main__artwork{
+        width: 100vw;
+        height: 100vw;
+    }
+    #artwork{
+        width: 100%;
+        height: 100%;
+    }
+    #track-embed{
+        opacity: 0;
+    }
+    .main__right{
+        text-align: center;
+    }
+    .main__right__text{
+        font-size: 28px;
+    }
+    .flat-button{
+        font-size: 16px;
+        border-radius: 8px;
+        border-color: transparent;
+        cursor: pointer;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        transition: transform 0.3s ease-in-out;
+        backface-visibility: hidden;
+        width: auto;
+        outline: none;
+    }
+    .flat-button:hover{
+        transform: scale(1.01);
+        outline: none;
+    }
+     .logo-container{
+        vertical-align: middle;
+    }
+    #spotify-icon{
+        width: 16px;
+        height: 16px;
+        vertical-align: center;
+    }
+    #apple-logo{
+        width: 16px;
+        height: 16px;
+        vertical-align: center;
+    }
+    .main__trademark{
+        position: fixed;
+        font-family: 'Quicksand', serif;
+        font-weight: lighter;
+        font-size: 16px;
+        text-decoration: none;
+        margin-top: 94vh;
+        width: 100%;
+        text-align: center
+    }
+}
+@media only screen and
+(min-width: 900px) and
+(max-width: 1199px)
+{
+    #body{
+        overflow: hidden;
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+    }
+    .main{
+        width: 800px;
+        height: 400px;
+        margin: auto;
+        display: flex;
+    }
+    .main__left{
+        width: 50%;
+        height: 100%;
+        justify-content: center;
+    }
+    .main__artwork{
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        position: relative;
+    }
+    .main__embed{
+        transition: opacity 0.3s ease-in-out;
+        opacity: 0;
+        z-index: 3;
+        border-radius: 8px;
+        border-color: transparent;
+        position: absolute;
+        margin-left: -601.5px;
+        margin-top: 518px;
+    }
+    .main__left:hover > .main__embed{
+        opacity: 100%;
+    }
+    .main__right{
+        width: 50%;
+        height: 100%;
+        font-family: 'Quicksand', serif;
+        text-align: center;
+        background-color: transparent;
+    }
+   .main__right__text{
+       font-size: 52px;
+   }
+    .main__right__container{
+        margin-top: 100px;
+    }
+    .flat-button{
+        font-size: 32px;
+        border-radius: 8px;
+        border-color: transparent;
+        cursor: pointer;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        transition: transform 0.3s ease-in-out;
+        backface-visibility: hidden;
+        outline: none;
+    }
+    .flat-button:hover{
+        transform: scale(1.01);
+        outline: none;
+    }
+    #download-button{
+        margin-top: 5px;
+    }
+    .logo-container{
+        vertical-align: middle;
+    }
+    #spotify-icon{
+        width: 32px;
+        height: 32px;
+        vertical-align: center;
+    }
+    #apple-logo{
+        width: 32px;
+        height: 32px;
+        vertical-align: center;
+    }
+    .main__trademark{
+        position: fixed;
+        font-family: 'Quicksand', serif;
+        font-weight: lighter;
+        font-size: 20px;
+        text-decoration: none;
+        margin-top: 94vh;
+        text-align: center;
+    }
+}
+@media only screen and
+(min-width: 1200px) and
+(max-width: 1439px)
+{
+    #body{
+        overflow: hidden;
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+    }
+    .main{
+        width: 1200px;
+        height: 600px;
+        margin: auto;
+        display: flex;
+    }
+    .main__left{
+        width: 50%;
+        height: 100%;
+        justify-content: center;
+    }
+    .main__artwork{
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        position: relative;
+    }
+    .main__embed{
+        transition: opacity 0.3s ease-in-out;
+        opacity: 0;
+        z-index: 3;
+        border-radius: 8px;
+        border-color: transparent;
+        position: absolute;
+        margin-left: -601.5px;
+        margin-top: 518px;
+    }
+    .main__left:hover > .main__embed{
+        opacity: 100%;
+    }
+    .main__right{
+        width: 50%;
+        height: 100%;
+        font-family: 'Quicksand', serif;
+        text-align: center;
+        background-color: transparent;
+    }
+   .main__right__text{
+       font-size: 52px;
+   }
+    .main__right__container{
+        margin-top: 100px;
+    }
+    .flat-button{
+        font-size: 32px;
+        border-radius: 8px;
+        border-color: transparent;
+        cursor: pointer;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        transition: transform 0.3s ease-in-out;
+        backface-visibility: hidden;
+        outline: none;
+    }
+    .flat-button:hover{
+        transform: scale(1.01);
+        outline: none;
+    }
+    .logo-container{
+        vertical-align: middle;
+    }
+    #spotify-icon{
+        width: 32px;
+        height: 32px;
+        vertical-align: center;
+    }
+    #apple-logo{
+        width: 32px;
+        height: 32px;
+        vertical-align: center;
+    }
+    .main__trademark{
+        position: fixed;
+        font-family: 'Quicksand', serif;
+        font-weight: lighter;
+        font-size: 20px;
+        text-decoration: none;
+        margin-top: 94vh;
+        text-align: center;
+    }
+}
+@media only screen and
+(min-width: 1440px)
+{
+    #body{
+        overflow: hidden;
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+    }
+    .main{
+        width: 1400px;
+        height: 700px;
+        margin: auto;
+        display: flex;
+    }
+    .main__left{
+        width: 50%;
+        height: 100%;
+        justify-content: center;
+    }
+    .main__artwork{
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        position: relative;
+    }
+    .main__embed{
+        transition: opacity 0.3s ease-in-out;
+        opacity: 0;
+        z-index: 3;
+        border-radius: 8px;
+        border-color: transparent;
+        position: absolute;
+        margin-left: -701.5px;
+        margin-top: 618px;
+    }
+    .main__left:hover > .main__embed{
+        opacity: 100%;
+    }
+    .main__right{
+        width: 50%;
+        height: 100%;
+        font-family: 'Quicksand', serif;
+        text-align: center;
+        background-color: transparent;
+    }
+   .main__right__text{
+       font-size: 52px;
+   }
+    .main__right__container{
+        margin-top: 100px;
+    }
+    .flat-button{
+        font-size: 32px;
+        border-radius: 8px;
+        border-color: transparent;
+        cursor: pointer;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        transition: transform 0.3s ease-in-out;
+        backface-visibility: hidden;
+        outline: none;
+    }
+    .flat-button:hover{
+        transform: scale(1.01);
+        outline: none;
+    }
+    .logo-container{
+        vertical-align: middle;
+    }
+    #spotify-icon{
+        width: 32px;
+        height: 32px;
+        vertical-align: center;
+    }
+    #apple-logo{
+        width: 32px;
+        height: 32px;
+        vertical-align: center;
+    }
+    .main__trademark{
+        position: fixed;
+        font-family: 'Quicksand', serif;
+        font-weight: lighter;
+        font-size: 20px;
+        text-decoration: none;
+        margin-top: 94vh;
+        text-align: center;
+    }
+}
+

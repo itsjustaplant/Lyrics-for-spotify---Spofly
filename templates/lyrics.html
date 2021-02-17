@@ -1,167 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" href={{image}}>
+    <link rel="icon" href={{artwork_url}}>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel= "stylesheet" type= "text/css" href="../static/css/lyrics.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content={{refresh_ms}} http-equiv="refresh">
     <meta charset="UTF-8">
-    <title>{{artist_name}}-{{song_title}}</title>
+    <title>{{artist_name}}-{{song_name}}</title>
 </head>
-<body>
-<div id="row">
-    <div id="image">
-        <a> <img id="img" src="{{image}}" alt="cover-art"> </a>
+<body id="body" style="background-color: {{ bg }}">
+<div class="main">
+    <div class="main__left">
+        <a> <img class="main__artwork" id="artwork" src="{{artwork_url}}" alt="artwork"> </a>
     </div>
-    <div id='lyric_section'>
-        <h1>{{artist_name}}-{{song_title}}</h1>
-        <pre id="lyrics"><span>{{ data }}</span></pre>
+    <div id='main__right'>
+        <h1 class="main__header" id="lyrics_header" style="color: {{ fg }}; background-color: {{ bg }}">{{artist_name}}-{{song_name}}</h1>
+        <label for="lyrics"></label><label for="lyrics_area"></label><textarea readonly class="main__lyrics--desktop" id="lyrics_area" style="background-color:  {{ bg }}; color: {{ fg }}">{{data}}</textarea>
+        <pre class="main__lyrics--mobile" id="lyrics_span"><span style="color: {{ fg }}">{{ data }}</span></pre>
     </div>
 </div>
+<a class="main__trademark" id="trademark" href="https://itsjustaplant.github.io" style="color: {{ fg }}">Made by plant🌱</a>
 </body>
 </html>
-<style>
-    @media screen and (min-width: 480px){
-        body{
-            background-color: {{bg_color}}
-        }
-        .material-icons.md-48{
-            font-size: 48px;
-            color: {{ txt_color }};
-        }
-        #buttons{
-            text-align: center;
-            alignment: center;
-            -webkit-transition: all 1s ease;
-        }
-        #previous{
-            width: 48px;
-            height: 48px;
-            padding-right: 5vw;
-        }
-        #main{
-            width: 48px;
-            height: 48px;
-            position: fixed;
-        }
-        #next{
-            width: 48px;
-            height: 48px;
-            margin-left: 5vw;
-        }
-        #row{
-            display:flex;
-            background-color: {{bg_color}};
-        }
-        #image{
-
-            width: 50vw;
-            height: 50vw;
-            position:fixed;
-            background-color: {{bg_color}};
-
-        }
-        #lyric_section{
-            margin-top: 20px;
-            margin-left: 50vw;
-            width: 50vw;
-        }
-        h1{
-            margin-top:-20px;
-            width: 50vw;
-            z-index: 5;
-            position:fixed;
-            text-align:center;
-            background-color: {{bg_color}};
-            color: {{txt_color}} !important;
-            font-family: 'Quicksand', serif;
-            font-size:5vh;
-
-        }
-        #lyrics{
-            margin-top:5vh;
-            background-color: {{bg_color}};
-            color: {{txt_color}} !important;
-            font-family: 'Quicksand', serif;
-            font-size:2.5vh;
-        }
-        #img{
-            height: 50vw;
-            width: 50vw;
-        }
-        pre{
-            overflow-x: auto;
-            white-space: pre-wrap;
-            white-space: -moz-pre-wrap;
-            white-space: -o-pre-wrap;
-            word-wrap: break-word;
-        }
-    }
-
-    @media screen and (max-width:480px ){
-        body{
-            background-color: {{bg_color}};
-            margin-top: -0.001vh;
-        }
-        .material-icons.md-48{
-            font-size: 30px;
-            color: {{ txt_color }};
-        }
-        #buttons{
-            margin-top: -8vw;
-            alignment: center;
-            text-align: center;
-        }
-        #image{
-            position: fixed;
-            alignment: center;
-            display: block;
-            width: 100vw;
-            height: 50vh;
-            z-index: 8;
-            margin-bottom: -5vh;
-            background-color: {{bg_color}};
-        }
-        #img{
-            display: block;
-            margin-left:auto;
-            margin-right:auto;
-            transition: all 0.5s ease;
-            width: 100%;
-            height: 100%;
-        }
-        h1{
-            font-family: 'Quicksand', serif;
-            font-weight: bold;
-            display: block;
-            text-align: center;
-            background-color: {{bg_color}};
-            color: {{txt_color}};
-            position: fixed;
-            alignment: center;
-            width: 100vw;
-            font-size: 2.5vh;
-            margin-top: 50vh;
-            z-index: 8;
-        }
-        #lyrics{
-            font-family: 'Quicksand', serif;
-            text-align: center;
-            display: block;
-            position: absolute;
-            width: 100vw;
-            margin-top: 53.6vh;
-            font-size: 2.5vh;
-            background-color: {{bg_color}};
-            color: {{txt_color}} !important;
-        }
-    }
-    pre {
-        overflow-x: auto;
-        white-space: pre-wrap;
-        white-space: -moz-pre-wrap;
-        white-space: -o-pre-wrap;
-        word-wrap: break-word;
-    }
-</style>

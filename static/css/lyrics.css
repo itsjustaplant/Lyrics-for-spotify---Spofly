@@ -1,0 +1,243 @@
+@media only screen and
+(max-width: 599px){
+    #body{
+        width: 100vw;
+        height: 100vh;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: auto;
+        display: flex;
+    }
+    .main{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+    .main__left{
+        width: 100vw;
+        height: 100vw;
+         z-index: 3;
+        position: fixed;
+        alignment: center;
+    }
+    #artwork{
+        width: 100vw;
+        height: 100vw;
+    }
+    .main__right{
+        width: 100vw;
+        text-align: center;
+    }
+    #lyrics_header{
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        margin-top: 100vw;
+        width: 100%;
+        font-family: 'Quicksand', serif;
+        font-size: 20px;
+        font-weight: bold;
+        z-index: 4;
+    }
+    .main__lyrics--desktop{
+        visibility: hidden;
+    }
+    .main__lyrics--mobile{
+        text-align: center;
+        font-family: 'Quicksand', serif;
+        font-size: 18px;
+        margin-top: 53.6vh;
+    }
+    pre{
+        overflow-x: auto;
+    }
+    #trademark{
+        visibility: hidden;
+    }
+}
+@media only screen and
+(min-width: 600px) and
+(max-width: 899px){
+
+}
+@media only screen and
+(min-width: 900px) and
+(max-width: 1199px){
+
+}
+@media only screen and
+(min-width: 1200px) and
+(max-width: 1439px) {
+    #body {
+       overflow: hidden;
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+    }
+
+    .main {
+        width: 1200px;
+        height: 600px;
+        margin: auto;
+        display: flex;
+    }
+
+    .main__left {
+        width: 50%;
+        height: 100%;
+        justify-content: center;
+    }
+
+    .main__artwork {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        position: relative;
+    }
+
+    .main__right {
+        width: 50%;
+        height: 100%;
+        text-align: center;
+        background-color: transparent;
+    }
+
+    .main__header {
+        margin-left: 10px;
+
+    }
+    #lyrics_header{
+        font-family: 'Quicksand', serif;
+        font-size: 24px;
+        font-weight: bold;
+        width: 100%;
+    }
+
+    .main__lyrics--desktop {
+        margin-left: 10px;
+        border: none;
+    }
+
+    #lyrics_area {
+        font-family: 'Quicksand', serif;
+        font-size: 20px;
+        resize: none;
+        outline: none !important;
+        width: 100%;
+        height: 89%;
+    }
+
+    #lyrics_area:focus {
+        outline: none !important;
+    }
+    #lyrics_span{
+        visibility: hidden;
+    }
+
+    ::-webkit-scrollbar {
+        width: 0;
+    }
+
+    .main__trademark {
+        position: fixed;
+        font-family: 'Quicksand', serif;
+        font-weight: lighter;
+        font-size: 20px;
+        text-decoration: none !important;
+        margin-top: 94vh;
+        text-align: center;
+    }
+
+    #trademark {
+        text-decoration: none !important;
+    }
+}
+@media only screen and
+(min-width: 1440px)
+{
+ #body {
+       overflow: hidden;
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+    }
+
+    .main {
+        width: 1400px;
+        height: 700px;
+        margin: auto;
+        display: flex;
+    }
+
+    .main__left {
+        width: 50%;
+        height: 100%;
+        justify-content: center;
+    }
+
+    .main__artwork {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        position: relative;
+    }
+
+    .main__right {
+        width: 50%;
+        height: 100%;
+        text-align: center;
+        background-color: transparent;
+    }
+
+    .main__header {
+        margin-left: 10px;
+
+    }
+    #lyrics_header{
+        font-family: 'Quicksand', serif;
+        font-size: 24px;
+        font-weight: bold;
+        width: 100%;
+    }
+
+    .main__lyrics--desktop {
+        margin-left: 10px;
+        border: none;
+    }
+
+    #lyrics_area {
+        font-family: 'Quicksand', serif;
+        font-size: 20px;
+        resize: none;
+        outline: none !important;
+        width: 100%;
+        height: 89%;
+    }
+
+    #lyrics_area:focus {
+        outline: none !important;
+    }
+    #lyrics_span{
+        visibility: hidden;
+    }
+
+    ::-webkit-scrollbar {
+        width: 0;
+    }
+
+    .main__trademark {
+        position: fixed;
+        font-family: 'Quicksand', serif;
+        font-weight: lighter;
+        font-size: 20px;
+        text-decoration: none !important;
+        margin-top: 94vh;
+        text-align: center;
+    }
+
+    #trademark {
+        text-decoration: none !important;
+    }
+}
