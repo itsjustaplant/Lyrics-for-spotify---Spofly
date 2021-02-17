@@ -329,6 +329,7 @@
     }
     .main__lyrics--desktop {
         margin-left: 10px;
+        width: 700px;
         border: none;
     }
     #lyrics_area {
@@ -336,11 +337,14 @@
         font-size: 20px;
         resize: none;
         outline: none !important;
-        width: 100%;
+        width: 700px;
         height: 89%;
     }
     #lyrics_area:focus {
         outline: none !important;
+    }
+    pre{
+        width: 700px;
     }
     #lyrics_span{
         visibility: hidden;
