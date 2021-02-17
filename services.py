@@ -4,7 +4,7 @@ import requests
 from flask import redirect, request, session
 
 CLIENT_ID = "94bc89eaaa30437aba608352e9de4565"
-CLIENT_SECRET = "77765644dc0140e99da1113454e42c29"
+CLIENT_SECRET = "--insert client secret here--"
 SPOTIFY_URL = "https://accounts.spotify.com"
 SPOTIFY_API_URL = "https://api.spotify.com"
 COLORFLY_BASE_URL = "http://colorflyv1.herokuapp.com/v1/"
