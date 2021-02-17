@@ -17,7 +17,7 @@ SCOPE = "user-read-currently-playing"
 def login():
     return SPOTIFY_URL + \
            "/authorize?client_id=" + CLIENT_ID + \
-           "&response_type=code&redirect_uri=" + LOCAL_URI +  \
+           "&response_type=code&redirect_uri=" + REDIRECT_URI +  \
            "&scope=" + SCOPE
 
 
@@ -27,7 +27,7 @@ def callback():
     session['code_payload'] = {
         'grant_type': 'authorization_code',
         'code': str(session['auth_token']),
-        'redirect_uri': LOCAL_URI
+        'redirect_uri': REDIRECT_URI
     }
     base = "{}:{}"
     format_client = base.format(CLIENT_ID, CLIENT_SECRET)

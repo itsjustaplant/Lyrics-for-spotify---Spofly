@@ -1,135 +1,43 @@
-import base64
-import io
-import json
 import os
-import ssl
-import urllib.request
 
-import lyricsgenius
-import requests
-from colorthief import ColorThief
-from flask import Flask, render_template, redirect, request, session
+from flask import Flask, render_template, redirect, session
+
+import services
 
 app = Flask(__name__)
 app.secret_key = os.urandom(20)
-# You need to define CLIENT_ID and CLIENT_SECRET for local build
-CLIENT_ID = "94bc89eaaa30437aba608352e9de4565"
-CLIENT_SECRET = "77765644dc0140e99da1113454e42c29"
-SPOTIFY_URL = "https://accounts.spotify.com"
-SPOTIFY_API_URL = "https://api.spotify.com"
-GENIUS_URL = "https://www.genius.com/"
-REDIRECT_URI = "https://spoflyv1.herokuapp.com/callback"
-LOCAL_URI = "http://localhost:5000/callback"
-genius = lyricsgenius.Genius("uU4CpVCElElrkZpU7MryYDOwXJP-iJ7-dkskucXYNtVIDcr-AeQ1nlD_o0qKp4iv")
 
 
 @app.route("/")
-def login():
+def landing():
     return render_template("login.html")
 
 
 @app.route("/login")
-def log():
-    return redirect(
-        SPOTIFY_URL + "/authorize?client_id="
-        + CLIENT_ID
-        + "&response_type=code&redirect_uri="
-        + REDIRECT_URI
-        + "&scope=user-read-private user-read-email user-read-currently-playing user-modify-playback-state")
+def login():
+    return redirect(services.login())
 
 
 @app.route("/callback")
-def token():
-    session['auth_token'] = request.args['code']
-    session['code_payload'] = {
-        'grant_type': 'authorization_code',
-        'code': str(session['auth_token']),
-        'redirect_uri': REDIRECT_URI
-    }
-    base = "{}:{}"
-    format_client = base.format(CLIENT_ID, CLIENT_SECRET)
-    base64encoded = base64.urlsafe_b64encode(format_client.encode()).decode()
-    session['headers'] = {"Authorization": "Basic {}".format(base64encoded)}
-    post_request = requests.post(SPOTIFY_URL + "/api/token", data=session['code_payload'],
-                                 headers=session['headers'])
-    response_data = json.loads(post_request.text)
-    session['access_token'] = response_data['access_token']
-    session['authorization_header'] = {'Authorization': 'Bearer {}'.format(session['access_token'])}
+def callback():
+    services.callback()
     return redirect("/lyrics")
 
 
 @app.route("/lyrics")
-def init():
-    token = session.get("access_token")
-    if token:
-        headers = {
-            "Authorization": "Bearer {}".format(session['access_token'])
-        }
-
-        spotify = requests.get(SPOTIFY_URL + "/v1/me/player/currently_playing", headers=headers)
-        if spotify.status_code == 204:
-            return redirect("/favs")
-        while spotify.status_code != 200:
-            spotify = spotify = requests.get(SPOTIFY_API_URL + "/v1/me/player/currently_playing", headers=headers)
-        current_song = spotify.json()
-
-        song_title = current_song['item']['name']
-        artist_name = current_song['item']['artists'][0]['name']
-        duration_ms = current_song['item']['duration_ms']
-        progress_ms = current_song['progress_ms']
-        refresh_ms = (duration_ms - progress_ms) / 1000 - 15
-        if refresh_ms < 0:
-            refresh_ms *= -1
-
-        if current_song['item']['is_local'] == bool(0):
-            context = ssl._create_unverified_context()
-            image_url = current_song['item']['album']['images'][0]['url']
-            fd = urllib.request.urlopen(image_url, context=context)
-            f = io.BytesIO(fd.read())
-            color_thief = ColorThief(f)
-            palette = color_thief.get_palette(color_count=6)
-
-            # function to transform rgb to hex format
-            def rgb2hex(r, g, b):
-                return "#{:02x}{:02x}{:02x}".format(r, g, b)
-
-            # luminance for color of lyrics
-            luminance = 1 - (0.299 * palette[0][0] + 0.587 * palette[0][1] + 0.114 * palette[0][2]) / 255
-            if luminance < 0.5:
-                col_2 = "#000000"
-            else:
-                col_2 = "#FFFFFF"
-
-            col_1 = rgb2hex(palette[0][0], palette[0][1], palette[0][2])
-            col_3 = rgb2hex(palette[2][0], palette[2][1], palette[2][2])
-
-            if song_title and artist_name:
-                song = genius.search_song(title=song_title, artist=artist_name)
-
-                if song is not None:
-                    lyrics = song.lyrics
-
-                else:
-                    lyrics = "lyrics not found"
-
-            else:
-                lyrics = "if you are playing a local file please edit metadata"
-
-            return render_template("lyrics.html", bg_color=col_1, txt_color=col_2, data=lyrics, artist_name=artist_name,
-                                   song_title=song_title,
-                                   image=image_url, refresh_ms=refresh_ms, shadow=col_3)
-
-        else:
-            return render_template("404.html", data="you have reached the end of the internet ",
-                                   artist_name=artist_name, song_title=song_title, refresh_ms=refresh_ms)
-    else:
-        return redirect("/login")
+def lyrics():
+    song, artist, refresh_ms, is_local, artwork_url = services.get_song()
+    bg_color, txt_color = services.get_colors(is_local, artwork_url)
+    song_lyrics = services.get_lyrics(artist, song)
+    return render_template("lyrics.html", artwork_url=artwork_url, artist_name=artist, song_name=song, data=song_lyrics,
+                           refresh_ms=refresh_ms, bg=bg_color, fg=txt_color)
 
 
 @app.route("/logout")
 def logout():
     session.clear()
     return redirect("/")
+
 
 if __name__ == '__main__':
     app.run()
