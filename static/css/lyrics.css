@@ -16,7 +16,7 @@
     .main__left{
         width: 100vw;
         height: 100vw;
-         z-index: 3;
+        z-index: 3;
         position: fixed;
         alignment: center;
     }
@@ -58,54 +58,97 @@
 @media only screen and
 (min-width: 600px) and
 (max-width: 899px){
-
+    #body{
+        width: 100vw;
+        height: 100vh;
+        overflow-x: auto;
+        margin-left: auto;
+        margin-top: auto;
+        display: flex;
+    }
+    .main{
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+    }
+    .main__left{
+        width: 100vw;
+        height: 100vw;
+        z-index: 3;
+        position: fixed;
+        alignment: center;
+    }
+    #artwork{
+        width: 100vw;
+        height: 100vw;
+    }
+    .main__right{
+        width: 100vw !important;
+        text-align: center;
+    }
+    #lyrics_header{
+        display: flex;
+        justify-content: center;
+        font-family: 'Quicksand', serif;
+        font-size: 20px;
+        font-weight: bold;
+        z-index: 4;
+        margin-top: 100vw;
+        width: 100%;
+    }
+    .main__lyrics--desktop{
+        visibility: hidden;
+    }
+    .main__lyrics--mobile{
+        text-align: center;
+        font-family: 'Quicksand', serif;
+        font-size: 18px;
+    }
+    #pre{
+        overflow-x: auto;
+    }
+    #trademark{
+        visibility: hidden;
+    }
 }
 @media only screen and
 (min-width: 900px) and
 (max-width: 1199px){
-
-}
-@media only screen and
-(min-width: 1200px) and
-(max-width: 1439px) {
-    #body {
-       overflow: hidden;
+    #body{
+        overflow: hidden;
         display: flex;
         width: 100vw;
         height: 100vh;
         justify-content: center;
     }
-
-    .main {
-        width: 1200px;
-        height: 600px;
+    .main{
+        width: 800px;
+        height: 400px;
         margin: auto;
         display: flex;
     }
-
-    .main__left {
+    .main__left{
         width: 50%;
         height: 100%;
         justify-content: center;
     }
-
-    .main__artwork {
+    .main__artwork{
         width: 100%;
         height: 100%;
         border-radius: 8px;
         position: relative;
+        display: block;
     }
-
     .main__right {
         width: 50%;
         height: 100%;
         text-align: center;
         background-color: transparent;
+        display: block;
+        overflow-x: hidden;
     }
-
     .main__header {
         margin-left: 10px;
-
     }
     #lyrics_header{
         font-family: 'Quicksand', serif;
@@ -113,32 +156,34 @@
         font-weight: bold;
         width: 100%;
     }
-
     .main__lyrics--desktop {
+        width: 400px;
         margin-left: 10px;
         border: none;
     }
-
+    .main__lyrics--mobile{
+        visibility: hidden;
+    }
     #lyrics_area {
         font-family: 'Quicksand', serif;
         font-size: 20px;
         resize: none;
         outline: none !important;
-        width: 100%;
-        height: 89%;
+        width: 400px;
+        height: 80%;
     }
-
     #lyrics_area:focus {
         outline: none !important;
+    }
+    pre{
+        width: 400px;
     }
     #lyrics_span{
         visibility: hidden;
     }
-
     ::-webkit-scrollbar {
         width: 0;
     }
-
     .main__trademark {
         position: fixed;
         font-family: 'Quicksand', serif;
@@ -148,7 +193,93 @@
         margin-top: 94vh;
         text-align: center;
     }
-
+    #trademark {
+        text-decoration: none !important;
+    }
+}
+@media only screen and
+(min-width: 1200px) and
+(max-width: 1439px) {
+    #body {
+        overflow: hidden;
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+    }
+    .main {
+        width: 1200px;
+        height: 600px;
+        margin: auto;
+        display: flex;
+    }
+    .main__left {
+        width: 50%;
+        height: 100%;
+        justify-content: center;
+        display: block;
+    }
+    .main__artwork {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        position: relative;
+        display: block;
+    }
+    .main__right {
+        width: 50%;
+        height: 100%;
+        text-align: center;
+        background-color: transparent;
+        display: block;
+        overflow-x: hidden;
+    }
+    .main__header {
+        margin-left: 10px;
+    }
+    #lyrics_header{
+        font-family: 'Quicksand', serif;
+        font-size: 24px;
+        font-weight: bold;
+        width: 100%;
+    }
+    .main__lyrics--desktop {
+        width: 600px;
+        margin-left: 10px;
+        border: none;
+    }
+    .main__lyrics--mobile{
+        visibility: hidden;
+    }
+    #lyrics_area {
+        font-family: 'Quicksand', serif;
+        font-size: 20px;
+        resize: none;
+        outline: none !important;
+        width: 600px;
+        height: 89%;
+    }
+    #lyrics_area:focus {
+        outline: none !important;
+    }
+    pre{
+        width: 600px;
+    }
+    #lyrics_span{
+        visibility: hidden;
+    }
+    ::-webkit-scrollbar {
+        width: 0;
+    }
+    .main__trademark {
+        position: fixed;
+        font-family: 'Quicksand', serif;
+        font-weight: lighter;
+        font-size: 20px;
+        text-decoration: none !important;
+        margin-top: 94vh;
+        text-align: center;
+    }
     #trademark {
         text-decoration: none !important;
     }
@@ -156,41 +287,36 @@
 @media only screen and
 (min-width: 1440px)
 {
- #body {
-       overflow: hidden;
+    #body {
+        overflow: hidden;
         display: flex;
         width: 100vw;
         height: 100vh;
         justify-content: center;
     }
-
     .main {
         width: 1400px;
         height: 700px;
         margin: auto;
         display: flex;
     }
-
     .main__left {
         width: 50%;
         height: 100%;
         justify-content: center;
     }
-
     .main__artwork {
         width: 100%;
         height: 100%;
         border-radius: 8px;
         position: relative;
     }
-
     .main__right {
         width: 50%;
         height: 100%;
         text-align: center;
         background-color: transparent;
     }
-
     .main__header {
         margin-left: 10px;
 
@@ -201,12 +327,10 @@
         font-weight: bold;
         width: 100%;
     }
-
     .main__lyrics--desktop {
         margin-left: 10px;
         border: none;
     }
-
     #lyrics_area {
         font-family: 'Quicksand', serif;
         font-size: 20px;
@@ -215,18 +339,15 @@
         width: 100%;
         height: 89%;
     }
-
     #lyrics_area:focus {
         outline: none !important;
     }
     #lyrics_span{
         visibility: hidden;
     }
-
     ::-webkit-scrollbar {
         width: 0;
     }
-
     .main__trademark {
         position: fixed;
         font-family: 'Quicksand', serif;
@@ -236,7 +357,6 @@
         margin-top: 94vh;
         text-align: center;
     }
-
     #trademark {
         text-decoration: none !important;
     }

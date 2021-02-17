@@ -17,7 +17,7 @@ SCOPE = "user-read-currently-playing"
 def login():
     return SPOTIFY_URL + \
            "/authorize?client_id=" + CLIENT_ID + \
-           "&response_type=code&redirect_uri=" + REDIRECT_URI +  \
+           "&response_type=code&redirect_uri=" + REDIRECT_URI + \
            "&scope=" + SCOPE
 
 

@@ -51,7 +51,7 @@
         transform: scale(1.01);
         outline: none;
     }
-     .logo-container{
+    .logo-container{
         vertical-align: middle;
     }
     #spotify-icon{
@@ -78,7 +78,7 @@
 @media only screen and
 (min-width: 600px) and
 (max-width: 899px){
-     #body{
+    #body{
         overflow: hidden;
         width: 100vw;
         height: 100vh;
@@ -129,7 +129,7 @@
         transform: scale(1.01);
         outline: none;
     }
-     .logo-container{
+    .logo-container{
         vertical-align: middle;
     }
     #spotify-icon{
@@ -201,9 +201,9 @@
         text-align: center;
         background-color: transparent;
     }
-   .main__right__text{
-       font-size: 52px;
-   }
+    .main__right__text{
+        font-size: 52px;
+    }
     .main__right__container{
         margin-top: 100px;
     }
@@ -296,9 +296,9 @@
         text-align: center;
         background-color: transparent;
     }
-   .main__right__text{
-       font-size: 52px;
-   }
+    .main__right__text{
+        font-size: 52px;
+    }
     .main__right__container{
         margin-top: 100px;
     }
@@ -387,9 +387,9 @@
         text-align: center;
         background-color: transparent;
     }
-   .main__right__text{
-       font-size: 52px;
-   }
+    .main__right__text{
+        font-size: 52px;
+    }
     .main__right__container{
         margin-top: 100px;
     }
