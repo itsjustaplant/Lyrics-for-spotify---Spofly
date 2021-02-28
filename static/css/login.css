@@ -48,8 +48,7 @@
         outline: none;
     }
     .flat-button:hover{
-        transform: scale(1.01);
-        outline: none;
+        filter: brightness(0.8);
     }
     .logo-container{
         vertical-align: middle;
@@ -70,7 +69,7 @@
         font-weight: lighter;
         font-size: 16px;
         text-decoration: none;
-        margin-top: 94vh;
+        margin-top: 96vh;
         width: 100%;
         text-align: center
     }
@@ -126,8 +125,7 @@
         outline: none;
     }
     .flat-button:hover{
-        transform: scale(1.01);
-        outline: none;
+        filter: brightness(0.8);
     }
     .logo-container{
         vertical-align: middle;
@@ -219,8 +217,7 @@
         outline: none;
     }
     .flat-button:hover{
-        transform: scale(1.01);
-        outline: none;
+        filter: brightness(0.8);
     }
     #download-button{
         margin-top: 5px;
@@ -314,8 +311,7 @@
         outline: none;
     }
     .flat-button:hover{
-        transform: scale(1.01);
-        outline: none;
+        filter: brightness(0.8);
     }
     .logo-container{
         vertical-align: middle;
@@ -400,13 +396,11 @@
         cursor: pointer;
         padding-bottom: 20px;
         padding-top: 20px;
-        transition: transform 0.3s ease-in-out;
-        backface-visibility: hidden;
         outline: none;
+        transition: all 0.3s ease-in-out;
     }
     .flat-button:hover{
-        transform: scale(1.01);
-        outline: none;
+        filter: brightness(0.8);
     }
     .logo-container{
         vertical-align: middle;

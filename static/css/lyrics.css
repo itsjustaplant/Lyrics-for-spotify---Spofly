@@ -27,6 +27,7 @@
     .main__right{
         width: 100vw;
         text-align: center;
+        margin-top: 100vw;
     }
     #lyrics_header{
         display: flex;
@@ -46,7 +47,7 @@
         text-align: center;
         font-family: 'Quicksand', serif;
         font-size: 18px;
-        margin-top: 53.6vh;
+        margin-top: 50.6vh;
     }
     pre{
         overflow-x: auto;
